@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/lab/lab",
+    "pages/approval/approval",
+    "pages/consumables/consumables",
+    "pages/exam/exam"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "苏州大学“云中实验室”",
+    "navigationBarBackgroundColor": "#2bc3ff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/lab/index",
+        "iconPath": "static/images/lab.png",
+        "selectedIconPath": "static/images/lab.png",
+        "text": "实验室"
+      },
+      {
+        "pagePath": "pages/approval/approval",
+        "iconPath": "static/images/lab.png",
+        "selectedIconPath": "static/images/lab.png",
+        "text": "业务审批"
+      },
+      {
+        "pagePath": "pages/consumables/consumables",
+        "iconPath": "static/images/lab.png",
+        "selectedIconPath": "static/images/lab.png",
+        "text": "耗材管理"
+      },
+      {
+        "pagePath": "pages/exam/exam",
+        "iconPath": "static/images/lab.png",
+        "selectedIconPath": "static/images/lab.png",
+        "text": "考试练习"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,136 @@
+.ct-page {
+	padding: 20rpx;
+	flex: 1;
+}
+
+.ct-lab-item {
+	display: flex;
+	justify-content: space-between;
+	
+	&__button {
+		flex: 0 0 140rpx
+	}
+	
+	&__text {
+		flex: 1;
+	}
+}
+// 重写样式
+.van-field__control {
+	line-height: 26px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.big-button {
+	width: 100%;
+	padding: 0 20rpx;
+}
+
+.text-red {
+	color: #f44;
+}
+
+.ct-block-details {
+  color: #333;
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 26px;
+  }
+}
+
+.ct-item-block {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 8px;
+
+
+  &__title {
+    color: red;
+    min-width: 4em;
+  }
+
+  &__content {
+    & > span {
+      display: block;
+    }
+  }
+}
+
+.ct-table {
+  width: 100%;
+
+  tbody > tr {
+    border-bottom: 1px solid #eee;
+
+    & > td {
+      line-height: 24px;
+    }
+  }
+
+  & + h4 {
+    margin-top: 20px;
+  }
+}
+
+.ct-content {
+  padding: 0 12rpx;
+}
+
+.gray-btn.van-button {
+  background: #eee;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 12px;
+  width: 100%;
+  padding: 0;
+
+  &.gray-btn--green {
+    background: #07c160;
+    color: #fff;
+  }
+
+  &.gray-btn--red {
+    background: #f44;
+    color: #fff;
+  }
+}
+
+.ct-box {
+  background: #fff;
+
+  &__header {
+    border-top: 2px solid #f44;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #f44;
+		font-size: 16px;
+  }
+}
+
+.mt-medium {
+	margin-top: 20rpx;
+}
+
+.mb-large {
+	margin-bottom: 40rpx;
+}
+
+.mt-small {
+	margin-top: 10px;
+}
+
+.page {
+	background-color: #f7f9f8;
+}
+
+.readonly-textarea {
+	.van-field__control[readonly] {
+		background: #eee;
+		padding: 0 10rpx;
+	}
+}

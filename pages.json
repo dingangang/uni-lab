@@ -1,0 +1,82 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/login/login",
+			"style": {
+				"navigationStyle":"custom",
+				"h5":{
+					"titleView": false
+				}
+			}
+		},
+		{
+			"path": "pages/lab/lab",
+			"style": {
+				"navigationBarTitleText": "苏州大学“云中实验室”"
+			}
+		},
+		{
+			"path": "pages/lab/lab-book",
+			"style": {}
+		},{
+			"path": "pages/lab/lab-details",
+			"style": {}
+		},{
+			"path": "pages/lab/lab-approval",
+			"style": {}
+		},
+		{
+			"path" : "pages/approval/approval",
+			"style" : {}
+		},
+		{
+			"path" : "pages/approval/approval-details",
+			"style" : {}
+		},
+		{
+				"path" : "pages/consumables/consumables",
+				"style" : {}
+		},
+		{
+				"path" : "pages/consumables/consumables-details",
+				"style" : {}
+		},
+		{
+				"path" : "pages/exam/exam",
+				"style" : {}
+		}
+    ],
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#2bc3ff",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [{
+	        "pagePath": "pages/lab/lab",
+	        "iconPath": "static/images/lab.png",
+	        "selectedIconPath": "static/images/lab-selected.png",
+	        "text": "实验室"
+	    }, {
+	        "pagePath": "pages/approval/approval",
+	        "iconPath": "static/images/approval.png",
+	        "selectedIconPath": "static/images/approval-selected.png",
+	        "text": "业务审批"
+	    }, {
+	        "pagePath": "pages/consumables/consumables",
+	        "iconPath": "static/images/consumables.png",
+	        "selectedIconPath": "static/images/consumables-selected.png",
+	        "text": "耗材管理"
+	    }, {
+	        "pagePath": "pages/exam/exam",
+	        "iconPath": "static/images/exam.png",
+	        "selectedIconPath": "static/images/exam-selected.png",
+	        "text": "考试练习"
+	    }]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "苏州大学“云中实验室”",
+		"navigationBarBackgroundColor": "#2bc3ff",
+		"backgroundColor": "#F8F8F8"
+	}
+}
