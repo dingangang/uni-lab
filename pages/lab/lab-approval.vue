@@ -7,8 +7,7 @@
           value-class="text-left"
           title-class="x-limit-title"
           :value="checkValue"
-          @click="showPicker = true"
-          is-link
+          @tap="showPicker = true"
         />
 				<!-- #ifdef H5 -->
         <van-popup v-model="showPicker" position="bottom">

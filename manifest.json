@@ -1,5 +1,5 @@
 {
-    "name" : "苏州大学“云中实验室”",
+    "name" : "师大物理实验室",
     "appid" : "__UNI__B50CB92",
     "description" : "",
     "versionName" : "1.0.0",
@@ -74,7 +74,7 @@
         "router" : {
             "mode" : "hash"
         },
-        "title" : "苏州大学“云中实验室”",
+        "title" : "师大物理实验室",
         "domain" : "https://www.szqiye.club"
     }
 }

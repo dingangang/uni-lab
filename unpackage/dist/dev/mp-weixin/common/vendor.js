@@ -769,7 +769,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1621,297 +1621,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 102:
-/*!****************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/button/index.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var _component = __webpack_require__(/*! ../common/component */ 103);
-var _button = __webpack_require__(/*! ../mixins/button */ 108);
-var _openType = __webpack_require__(/*! ../mixins/open-type */ 109);
-(0, _component.VantComponent)({
-  mixins: [_button.button, _openType.openType],
-  classes: ['hover-class', 'loading-class'],
-  props: {
-    icon: String,
-    color: String,
-    plain: Boolean,
-    block: Boolean,
-    round: Boolean,
-    square: Boolean,
-    loading: Boolean,
-    hairline: Boolean,
-    disabled: Boolean,
-    loadingText: String,
-    type: {
-      type: String,
-      value: 'default' },
-
-    size: {
-      type: String,
-      value: 'normal' },
-
-    loadingSize: {
-      type: String,
-      value: '20px' } },
-
-
-  methods: {
-    onClick: function onClick() {
-      if (!this.data.disabled && !this.data.loading) {
-        this.$emit('click');
-      }
-    } } });
-
-/***/ }),
-
-/***/ 103:
-/*!********************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/common/component.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.VantComponent = VantComponent;var _basic = __webpack_require__(/*! ../mixins/basic */ 104);
-var _index = __webpack_require__(/*! ../mixins/observer/index */ 105);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-function mapKeys(source, target, map) {
-  Object.keys(map).forEach(function (key) {
-    if (source[key]) {
-      target[map[key]] = source[key];
-    }
-  });
-}
-function VantComponent() {var vantOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var options = {};
-  mapKeys(vantOptions, options, {
-    data: 'data',
-    props: 'properties',
-    mixins: 'behaviors',
-    methods: 'methods',
-    beforeCreate: 'created',
-    created: 'attached',
-    mounted: 'ready',
-    relations: 'relations',
-    destroyed: 'detached',
-    classes: 'externalClasses' });var
-
-  relation = vantOptions.relation;
-  if (relation) {
-    options.relations = Object.assign(options.relations || {}, _defineProperty({}, "../".concat(
-    relation.name, "/index"), relation));
-
-  }
-  // add default externalClasses
-  options.externalClasses = options.externalClasses || [];
-  options.externalClasses.push('custom-class');
-  // add default behaviors
-  options.behaviors = options.behaviors || [];
-  options.behaviors.push(_basic.basic);
-  // map field to form-field behavior
-  if (vantOptions.field) {
-    options.behaviors.push('wx://form-field');
-  }
-  // add default options
-  options.options = {
-    multipleSlots: true,
-    addGlobalClass: true };
-
-  (0, _index.observe)(vantOptions, options);
-  Component(options);
-}
-
-/***/ }),
-
-/***/ 104:
-/*!****************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/basic.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.basic = void 0;var basic = Behavior({
-  methods: {
-    $emit: function $emit() {
-      this.triggerEvent.apply(this, arguments);
-    },
-    getRect: function getRect(selector, all) {var _this = this;
-      return new Promise(function (resolve) {
-        wx.createSelectorQuery().
-        in(_this)[all ? 'selectAll' : 'select'](selector).
-        boundingClientRect(function (rect) {
-          if (all && Array.isArray(rect) && rect.length) {
-            resolve(rect);
-          }
-          if (!all && rect) {
-            resolve(rect);
-          }
-        }).
-        exec();
-      });
-    } } });exports.basic = basic;
-
-/***/ }),
-
-/***/ 105:
-/*!*************************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/index.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.observe = observe;var _behavior = __webpack_require__(/*! ./behavior */ 106);
-var _props = __webpack_require__(/*! ./props */ 107);
-function observe(vantOptions, options) {var
-  watch = vantOptions.watch,computed = vantOptions.computed;
-  options.behaviors.push(_behavior.behavior);
-  if (watch) {
-    var props = options.properties || {};
-    Object.keys(watch).forEach(function (key) {
-      if (key in props) {
-        var prop = props[key];
-        if (prop === null || !('type' in prop)) {
-          prop = { type: prop };
-        }
-        prop.observer = watch[key];
-        props[key] = prop;
-      }
-    });
-    options.properties = props;
-  }
-  if (computed) {
-    options.methods = options.methods || {};
-    options.methods.$options = function () {return vantOptions;};
-    if (options.properties) {
-      (0, _props.observeProps)(options.properties);
-    }
-  }
-}
-
-/***/ }),
-
-/***/ 106:
-/*!****************************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/behavior.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.behavior = void 0;function setAsync(context, data) {
-  return new Promise(function (resolve) {
-    context.setData(data, resolve);
-  });
-}
-var behavior = Behavior({
-  created: function created() {var _this = this;
-    if (!this.$options) {
-      return;
-    }
-    var cache = {};var _this$$options =
-    this.$options(),computed = _this$$options.computed;
-    var keys = Object.keys(computed);
-    this.calcComputed = function () {
-      var needUpdate = {};
-      keys.forEach(function (key) {
-        var value = computed[key].call(_this);
-        if (cache[key] !== value) {
-          cache[key] = value;
-          needUpdate[key] = value;
-        }
-      });
-      return needUpdate;
-    };
-  },
-  attached: function attached() {
-    this.set();
-  },
-  methods: {
-    // set data and set computed data
-    set: function set(data, callback) {var _this2 = this;
-      var stack = [];
-      if (data) {
-        stack.push(setAsync(this, data));
-      }
-      if (this.calcComputed) {
-        stack.push(setAsync(this, this.calcComputed()));
-      }
-      return Promise.all(stack).then(function (res) {
-        if (callback && typeof callback === 'function') {
-          callback.call(_this2);
-        }
-        return res;
-      });
-    } } });exports.behavior = behavior;
-
-/***/ }),
-
-/***/ 107:
-/*!*************************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/props.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.observeProps = observeProps;function observeProps(props) {
-  if (!props) {
-    return;
-  }
-  Object.keys(props).forEach(function (key) {
-    var prop = props[key];
-    if (prop === null || !('type' in prop)) {
-      prop = { type: prop };
-    }var _prop =
-    prop,observer = _prop.observer;
-    prop.observer = function () {
-      if (observer) {
-        if (typeof observer === 'string') {
-          observer = this[observer];
-        }for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
-        observer.apply(this, args);
-      }
-      this.set();
-    };
-    props[key] = prop;
-  });
-}
-
-/***/ }),
-
-/***/ 108:
-/*!*****************************************************************!*\
-  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/button.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.button = void 0;var button = Behavior({
-  externalClasses: ['hover-class'],
-  properties: {
-    id: String,
-    lang: {
-      type: String,
-      value: 'en' },
-
-    businessId: Number,
-    sessionFrom: String,
-    sendMessageTitle: String,
-    sendMessagePath: String,
-    sendMessageImg: String,
-    showMessageCard: Boolean,
-    appParameter: String,
-    ariaLabel: String } });exports.button = button;
-
-/***/ }),
-
-/***/ 109:
+/***/ 100:
 /*!********************************************************************!*\
   !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/open-type.js ***!
   \********************************************************************/
@@ -7442,7 +7152,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7463,14 +7173,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7546,7 +7256,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8116,6 +7826,296 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _exam = _interopRequireDefault(__webpack_require__(/*! ./pages/exam/exam.vue */ 79));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_exam.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 93:
+/*!****************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/button/index.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _component = __webpack_require__(/*! ../common/component */ 94);
+var _button = __webpack_require__(/*! ../mixins/button */ 99);
+var _openType = __webpack_require__(/*! ../mixins/open-type */ 100);
+(0, _component.VantComponent)({
+  mixins: [_button.button, _openType.openType],
+  classes: ['hover-class', 'loading-class'],
+  props: {
+    icon: String,
+    color: String,
+    plain: Boolean,
+    block: Boolean,
+    round: Boolean,
+    square: Boolean,
+    loading: Boolean,
+    hairline: Boolean,
+    disabled: Boolean,
+    loadingText: String,
+    type: {
+      type: String,
+      value: 'default' },
+
+    size: {
+      type: String,
+      value: 'normal' },
+
+    loadingSize: {
+      type: String,
+      value: '20px' } },
+
+
+  methods: {
+    onClick: function onClick() {
+      if (!this.data.disabled && !this.data.loading) {
+        this.$emit('click');
+      }
+    } } });
+
+/***/ }),
+
+/***/ 94:
+/*!********************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/common/component.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.VantComponent = VantComponent;var _basic = __webpack_require__(/*! ../mixins/basic */ 95);
+var _index = __webpack_require__(/*! ../mixins/observer/index */ 96);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+function mapKeys(source, target, map) {
+  Object.keys(map).forEach(function (key) {
+    if (source[key]) {
+      target[map[key]] = source[key];
+    }
+  });
+}
+function VantComponent() {var vantOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var options = {};
+  mapKeys(vantOptions, options, {
+    data: 'data',
+    props: 'properties',
+    mixins: 'behaviors',
+    methods: 'methods',
+    beforeCreate: 'created',
+    created: 'attached',
+    mounted: 'ready',
+    relations: 'relations',
+    destroyed: 'detached',
+    classes: 'externalClasses' });var
+
+  relation = vantOptions.relation;
+  if (relation) {
+    options.relations = Object.assign(options.relations || {}, _defineProperty({}, "../".concat(
+    relation.name, "/index"), relation));
+
+  }
+  // add default externalClasses
+  options.externalClasses = options.externalClasses || [];
+  options.externalClasses.push('custom-class');
+  // add default behaviors
+  options.behaviors = options.behaviors || [];
+  options.behaviors.push(_basic.basic);
+  // map field to form-field behavior
+  if (vantOptions.field) {
+    options.behaviors.push('wx://form-field');
+  }
+  // add default options
+  options.options = {
+    multipleSlots: true,
+    addGlobalClass: true };
+
+  (0, _index.observe)(vantOptions, options);
+  Component(options);
+}
+
+/***/ }),
+
+/***/ 95:
+/*!****************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/basic.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.basic = void 0;var basic = Behavior({
+  methods: {
+    $emit: function $emit() {
+      this.triggerEvent.apply(this, arguments);
+    },
+    getRect: function getRect(selector, all) {var _this = this;
+      return new Promise(function (resolve) {
+        wx.createSelectorQuery().
+        in(_this)[all ? 'selectAll' : 'select'](selector).
+        boundingClientRect(function (rect) {
+          if (all && Array.isArray(rect) && rect.length) {
+            resolve(rect);
+          }
+          if (!all && rect) {
+            resolve(rect);
+          }
+        }).
+        exec();
+      });
+    } } });exports.basic = basic;
+
+/***/ }),
+
+/***/ 96:
+/*!*************************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/index.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.observe = observe;var _behavior = __webpack_require__(/*! ./behavior */ 97);
+var _props = __webpack_require__(/*! ./props */ 98);
+function observe(vantOptions, options) {var
+  watch = vantOptions.watch,computed = vantOptions.computed;
+  options.behaviors.push(_behavior.behavior);
+  if (watch) {
+    var props = options.properties || {};
+    Object.keys(watch).forEach(function (key) {
+      if (key in props) {
+        var prop = props[key];
+        if (prop === null || !('type' in prop)) {
+          prop = { type: prop };
+        }
+        prop.observer = watch[key];
+        props[key] = prop;
+      }
+    });
+    options.properties = props;
+  }
+  if (computed) {
+    options.methods = options.methods || {};
+    options.methods.$options = function () {return vantOptions;};
+    if (options.properties) {
+      (0, _props.observeProps)(options.properties);
+    }
+  }
+}
+
+/***/ }),
+
+/***/ 97:
+/*!****************************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/behavior.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.behavior = void 0;function setAsync(context, data) {
+  return new Promise(function (resolve) {
+    context.setData(data, resolve);
+  });
+}
+var behavior = Behavior({
+  created: function created() {var _this = this;
+    if (!this.$options) {
+      return;
+    }
+    var cache = {};var _this$$options =
+    this.$options(),computed = _this$$options.computed;
+    var keys = Object.keys(computed);
+    this.calcComputed = function () {
+      var needUpdate = {};
+      keys.forEach(function (key) {
+        var value = computed[key].call(_this);
+        if (cache[key] !== value) {
+          cache[key] = value;
+          needUpdate[key] = value;
+        }
+      });
+      return needUpdate;
+    };
+  },
+  attached: function attached() {
+    this.set();
+  },
+  methods: {
+    // set data and set computed data
+    set: function set(data, callback) {var _this2 = this;
+      var stack = [];
+      if (data) {
+        stack.push(setAsync(this, data));
+      }
+      if (this.calcComputed) {
+        stack.push(setAsync(this, this.calcComputed()));
+      }
+      return Promise.all(stack).then(function (res) {
+        if (callback && typeof callback === 'function') {
+          callback.call(_this2);
+        }
+        return res;
+      });
+    } } });exports.behavior = behavior;
+
+/***/ }),
+
+/***/ 98:
+/*!*************************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/observer/props.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.observeProps = observeProps;function observeProps(props) {
+  if (!props) {
+    return;
+  }
+  Object.keys(props).forEach(function (key) {
+    var prop = props[key];
+    if (prop === null || !('type' in prop)) {
+      prop = { type: prop };
+    }var _prop =
+    prop,observer = _prop.observer;
+    prop.observer = function () {
+      if (observer) {
+        if (typeof observer === 'string') {
+          observer = this[observer];
+        }for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {args[_key] = arguments[_key];}
+        observer.apply(this, args);
+      }
+      this.set();
+    };
+    props[key] = prop;
+  });
+}
+
+/***/ }),
+
+/***/ 99:
+/*!*****************************************************************!*\
+  !*** C:/works/uni-lab/wxcomponents/vant-weapp/mixins/button.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.button = void 0;var button = Behavior({
+  externalClasses: ['hover-class'],
+  properties: {
+    id: String,
+    lang: {
+      type: String,
+      value: 'en' },
+
+    businessId: Number,
+    sessionFrom: String,
+    sendMessageTitle: String,
+    sendMessagePath: String,
+    sendMessageImg: String,
+    showMessageCard: Boolean,
+    appParameter: String,
+    ariaLabel: String } });exports.button = button;
 
 /***/ })
 

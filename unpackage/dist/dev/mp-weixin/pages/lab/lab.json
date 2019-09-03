@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "苏州大学“云中实验室”",
+  "navigationBarTitleText": "师大物理实验室",
   "onReachBottomDistance": 100,
   "usingComponents": {
     "van-button": "/wxcomponents/vant-weapp/button/index",

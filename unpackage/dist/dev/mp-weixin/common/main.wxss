@@ -1204,4 +1204,7 @@ button,input,textarea{color:inherit;font:inherit}
 .has-no-border .van-cell:after {
   content: none;
 }
+.bottom-btn-container {
+  padding: 0 40rpx;
+}
 

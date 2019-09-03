@@ -17,7 +17,6 @@
 		{
 			"path": "pages/lab/lab",
 			"style": {
-				"navigationBarTitleText": "苏州大学“云中实验室”",
 				"onReachBottomDistance": 100,
 				"usingComponents": {
 					"van-button": "/wxcomponents/vant-weapp/button/index",
@@ -33,7 +32,10 @@
 				"usingComponents": {
 					"van-button": "/wxcomponents/vant-weapp/button/index",
 					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index"
+					"van-field": "/wxcomponents/vant-weapp/field/index",
+					"van-cell": "/wxcomponents/vant-weapp/cell/index",
+					"van-datetime-picker": "/wxcomponents/vant-weapp/datetime-picker/index",
+					"van-popup": "/wxcomponents/vant-weapp/popup/index"
 				}
 			}
 		},{
@@ -64,23 +66,60 @@
 		},
 		{
 			"path" : "pages/approval/approval",
-			"style" : {}
+			"style" : {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-cell": "/wxcomponents/vant-weapp/cell/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
+				}
+			}
 		},
 		{
 			"path" : "pages/approval/approval-details",
-			"style" : {}
+			"style" : {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-cell": "/wxcomponents/vant-weapp/cell/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index",
+					"van-row": "/wxcomponents/vant-weapp/row/index",
+					"van-col": "/wxcomponents/vant-weapp/col/index"
+				}
+			}
 		},
 		{
 				"path" : "pages/consumables/consumables",
-				"style" : {}
+				"style" : {
+					"usingComponents": {
+						"van-button": "/wxcomponents/vant-weapp/button/index",
+						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+						"van-cell": "/wxcomponents/vant-weapp/cell/index",
+						"van-field": "/wxcomponents/vant-weapp/field/index"
+					}
+				}
 		},
 		{
 				"path" : "pages/consumables/consumables-details",
-				"style" : {}
+				"style" : {
+					"usingComponents": {
+						"van-button": "/wxcomponents/vant-weapp/button/index",
+						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+						"van-cell": "/wxcomponents/vant-weapp/cell/index",
+						"van-field": "/wxcomponents/vant-weapp/field/index"
+					}
+				}
 		},
 		{
 				"path" : "pages/exam/exam",
-				"style" : {}
+				"style" : {
+					"usingComponents": {
+						"van-button": "/wxcomponents/vant-weapp/button/index",
+						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+						"van-cell": "/wxcomponents/vant-weapp/cell/index",
+						"van-field": "/wxcomponents/vant-weapp/field/index"
+					}
+				}
 		}
     ],
 	"tabBar": {
@@ -112,7 +151,7 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "苏州大学“云中实验室”",
+		"navigationBarTitleText": "师大物理实验室",
 		"navigationBarBackgroundColor": "#2bc3ff",
 		"backgroundColor": "#F8F8F8"
 	}

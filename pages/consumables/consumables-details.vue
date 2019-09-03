@@ -23,18 +23,18 @@
 				placeholder="请输入数量"
 			/>
 		</van-cell-group>
-		<view class="mt-medium">
+		<view class="mt-medium bottom-btn-container">
 			<van-button
+			  size="large"
 				type="primary"
 				@tap="handleReceive"
-				class="big-button"
 				:loading="isReceiveLoading"
 				v-if="type==='1'"
 			>领用</van-button>
 			<van-button
+				size="large"
 				type="primary"
 				@tap="handleRecycle"
-				class="big-button"
 				:loading="isReceiveLoading"
 				v-if="type==='2'"
 			>回收</van-button>

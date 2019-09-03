@@ -71,6 +71,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = _vm.pickerTime.getTime()
+  var g1 = _vm.minDate.getTime()
+  var g2 = _vm.maxDate.getTime()
+
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
       _vm.showTimePicker = true
@@ -80,6 +84,17 @@ var render = function() {
       _vm.showTimePicker = false
     }
   }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0,
+        g1: g1,
+        g2: g2
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -160,6 +175,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -170,12 +208,10 @@ var _default =
         time: '(明天) ' + $vm.$dayjs(new Date()).add(1, 'day').format('YYYY-MM-DD HH:mm:ss'),
         message: '' },
 
-      minHour: 10,
-      maxHour: 20,
       minDate: new Date(),
       maxDate: new Date(2020, 10, 1),
-      showTimePicker: false,
       pickerTime: $vm.$dayjs(new Date()).add(1, 'day').toDate(),
+      showTimePicker: false,
       isBtnLoading: false };
 
   },
@@ -195,12 +231,23 @@ var _default =
               * 本方法用于设定时间，如果选择时间是明天，则会加上明天标识
               */
     confirmTime: function confirmTime(value) {
-      if (this.$dayjs(value).endOf('day').
-      diff(this.$dayjs(new Date()).endOf('day'), 'day') === 1) {
-        this.$set(this.labInfo, 'time', '(明天) ' + this.$dayjs(value).format('YYYY-MM-DD HH:mm:ss'));
-      } else {
-        this.$set(this.labInfo, 'time', this.$dayjs(value).format('YYYY-MM-DD HH:mm:ss'));
-      }
+      var $vm = this;
+
+
+
+
+
+
+
+
+
+
+
+      console.log(value);
+      this.pickerTime = $vm.$dayjs(value.detail).toDate();
+      this.labInfo.time = $vm.$dayjs(value.detail).format('YYYY-MM-DD HH:mm:ss');
+
+
       this.showTimePicker = false;
     },
     /**
@@ -215,8 +262,29 @@ var _default =
       console.log('要提交的数据是 ->', data);
       setTimeout(function () {
         _this.isBtnLoading = false;
-        _this.$toast('提交成功');
+
+
+
+
+
+        uni.showToast({
+          title: '提交成功' });
+
+
+
       }, 2000);
+    },
+    /**
+        * 时间选择器绑定事件
+        */
+    onInput: function onInput(event) {
+      this.pickerTime = event.detail;
+    },
+    /**
+        * 输入框绑定事件
+        */
+    handleChange: function handleChange(msg, event) {
+      this.labInfo.message = event.detail;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

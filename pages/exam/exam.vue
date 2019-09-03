@@ -1,12 +1,13 @@
 <template>
 	<view class="ct-page">
+		<!-- #ifdef H5 -->
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
 		  finished-text="没有更多了"
 		  @load="init"
 		>
-		    <van-cell
+			<van-cell
 				v-for="(item, index) in list"
 				:key="index"
 		    >
@@ -15,8 +16,26 @@
 						考试{{item}}
 					</text>
 				</view>
-		    </van-cell>
+			</van-cell>
 		</van-list>
+		<!-- #endif -->
+		
+		<!-- #ifdef MP-WEIXIN -->
+		<van-cell-group>
+			<van-cell
+				v-for="(item, index) in list"
+				:key="index"
+			  >
+				<view class="ct-lab-item" @tap.stop="goLabDetails(item)">
+					<text class="ct-lab-item__text">   
+						考试{{item}}
+					</text>
+				</view>
+			</van-cell>
+		</van-cell-group>
+		<view :hidden="finished" @tap="init" class="load-more-btn">加载更多</view>
+		<view :hidden="!finished" class="load-more-btn">没有更多了</view>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -30,7 +49,9 @@
 			}
 		},
 		onLoad() {
-			
+			// #ifdef MP-WEIXIN
+			this.init()
+			// #endif
 		},
     methods: {
 		/**
@@ -38,6 +59,11 @@
 		 */
 		init() {
 			// 这里包含了滚动加载，文档地址 https://youzan.github.io/vant/#/zh-CN/list
+			
+			if (this.finished) {
+				return
+			}
+			
 			// 异步更新数据
 			setTimeout(() => {
 				for (let i = 0; i < 10; i++) {

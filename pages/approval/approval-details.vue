@@ -11,6 +11,7 @@
 				autosize
 				readonly
 			/>
+			<!-- #ifdef H5 -->
 			<van-field
 				v-model="reason"
 				label="审批原因"
@@ -19,27 +20,40 @@
 				rows="4"
 				autosize
 			/>
+			<!-- #endif -->
+			
+			<!-- #ifdef MP-WEIXIN -->
+			<van-field
+				:value="reason"
+				label="审批原因"
+				type="textarea"
+				placeholder="审批原因"
+				rows="4"
+				autosize
+				@change="handleChange('reason', $event)" 
+			/>
+			<!-- #endif -->
 		</van-cell-group>
-		<van-row type="flex" justify="space-around">
-			<van-col span="10">
+		<view class="bottom-btn-container">
+			<view class="mt-small">
 				<van-button
+					size="large"
 					type="primary"
-					class="big-button"
 					:loading="isPassLoading"
 					:disabled="isRejectLoading"
 					@tap="handlePassTap"
 				>通过</van-button>
-			</van-col>
-			<van-col span="10">
+			</view>
+			<view class="mt-small">
 				<van-button
+					size="large"
 					type="danger"
-					class="big-button"
 					:loading="isRejectLoading"
 					:disabled="isPassLoading"
 					@tap="handleRejectTap"
 				>不通过</van-button>
-			</van-col>
-		</van-row>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -80,6 +94,12 @@
 					this.$toast('事项审批不通过')
 				}, 2000)
 			},
+			/**
+			 * 输入框绑定事件
+			 */
+			handleChange(msg, event) {
+				this.reason = event.detail
+			}
 		},
 	}
 </script>

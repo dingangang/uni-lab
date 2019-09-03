@@ -127,6 +127,25 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -138,6 +157,8 @@ var _default =
   },
   onLoad: function onLoad() {
 
+    this.init();
+
   },
   methods: {
     /**
@@ -145,6 +166,11 @@ var _default =
               */
     init: function init() {var _this = this;
       // 这里包含了滚动加载，文档地址 https://youzan.github.io/vant/#/zh-CN/list
+
+      if (this.finished) {
+        return;
+      }
+
       // 异步更新数据
       setTimeout(function () {
         for (var i = 0; i < 10; i++) {

@@ -69,11 +69,6 @@
 			this.init()
 			// #endif
 		},
-		// onPageScroll(e) {
-		// 	// #ifdef MP-WEIXIN
-		// 		console.log(e);
-		// 	// #endif
-		// },
 		onReachBottom() {
 			this.init()
 		},

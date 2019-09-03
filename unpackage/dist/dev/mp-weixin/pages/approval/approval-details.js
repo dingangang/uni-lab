@@ -148,6 +148,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -184,6 +198,12 @@ var _default =
         _this2.isRejectLoading = false;
         _this2.$toast('事项审批不通过');
       }, 2000);
+    },
+    /**
+        * 输入框绑定事件
+        */
+    handleChange: function handleChange(msg, event) {
+      this.reason = event.detail;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
