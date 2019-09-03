@@ -1,8 +1,14 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/lab/lab",
+    "pages/lab/lab-book",
+    "pages/lab/lab-details",
+    "pages/lab/lab-approval",
     "pages/approval/approval",
+    "pages/approval/approval-details",
     "pages/consumables/consumables",
+    "pages/consumables/consumables-details",
     "pages/exam/exam"
   ],
   "subPackages": [],
@@ -14,32 +20,32 @@
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#2bc3ff",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/lab/index",
+        "pagePath": "pages/lab/lab",
         "iconPath": "static/images/lab.png",
-        "selectedIconPath": "static/images/lab.png",
+        "selectedIconPath": "static/images/lab-selected.png",
         "text": "实验室"
       },
       {
         "pagePath": "pages/approval/approval",
-        "iconPath": "static/images/lab.png",
-        "selectedIconPath": "static/images/lab.png",
+        "iconPath": "static/images/approval.png",
+        "selectedIconPath": "static/images/approval-selected.png",
         "text": "业务审批"
       },
       {
         "pagePath": "pages/consumables/consumables",
-        "iconPath": "static/images/lab.png",
-        "selectedIconPath": "static/images/lab.png",
+        "iconPath": "static/images/consumables.png",
+        "selectedIconPath": "static/images/consumables-selected.png",
         "text": "耗材管理"
       },
       {
         "pagePath": "pages/exam/exam",
-        "iconPath": "static/images/lab.png",
-        "selectedIconPath": "static/images/lab.png",
+        "iconPath": "static/images/exam.png",
+        "selectedIconPath": "static/images/exam-selected.png",
         "text": "考试练习"
       }
     ]

@@ -6,24 +6,61 @@
 				"navigationStyle":"custom",
 				"h5":{
 					"titleView": false
+				},
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
 				}
 			}
 		},
 		{
 			"path": "pages/lab/lab",
 			"style": {
-				"navigationBarTitleText": "苏州大学“云中实验室”"
+				"navigationBarTitleText": "苏州大学“云中实验室”",
+				"onReachBottomDistance": 100,
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-cell": "/wxcomponents/vant-weapp/cell/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
+				}
 			}
 		},
 		{
 			"path": "pages/lab/lab-book",
-			"style": {}
+			"style": {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
+				}
+			}
 		},{
 			"path": "pages/lab/lab-details",
-			"style": {}
+			"style": {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-collapse": "/wxcomponents/vant-weapp/collapse/index",
+					"van-collapse-item": "/wxcomponents/vant-weapp/collapse-item/index",
+					"van-popup": "/wxcomponents/vant-weapp/popup/index",
+					"van-picker": "/wxcomponents/vant-weapp/picker/index"
+				}
+			}
 		},{
 			"path": "pages/lab/lab-approval",
-			"style": {}
+			"style": {
+				"usingComponents": {
+					"van-button": "/wxcomponents/vant-weapp/button/index",
+					"van-cell": "/wxcomponents/vant-weapp/cell/index",
+					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+					"van-popup": "/wxcomponents/vant-weapp/popup/index",
+					"van-picker": "/wxcomponents/vant-weapp/picker/index",
+					"van-icon": "/wxcomponents/vant-weapp/icon/index",
+					"van-row": "/wxcomponents/vant-weapp/row/index",
+					"van-field": "/wxcomponents/vant-weapp/field/index"
+				}
+			}
 		},
 		{
 			"path" : "pages/approval/approval",

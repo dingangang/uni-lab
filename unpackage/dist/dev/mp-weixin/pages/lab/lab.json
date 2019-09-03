@@ -1,4 +1,10 @@
 {
   "navigationBarTitleText": "苏州大学“云中实验室”",
-  "usingComponents": {}
+  "onReachBottomDistance": 100,
+  "usingComponents": {
+    "van-button": "/wxcomponents/vant-weapp/button/index",
+    "van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
+    "van-cell": "/wxcomponents/vant-weapp/cell/index",
+    "van-field": "/wxcomponents/vant-weapp/field/index"
+  }
 }

@@ -1,18 +1,29 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
 /*每个页面公共css */
 @-webkit-keyframes van-slide-up-enter{0%{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}
 @keyframes van-slide-up-enter{0%{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}}
@@ -1015,4 +1026,182 @@ button,input,textarea{color:inherit;font:inherit}
 .van-sku-actions .van-button:last-of-type{border-top-right-radius:18px;border-bottom-right-radius:18px}
 .van-sku-actions .van-button--warning{background:-webkit-gradient(linear,left top, right top,from(#ffd01e),to(#ff8917));background:-o-linear-gradient(left,#ffd01e,#ff8917);background:linear-gradient(to right,#ffd01e,#ff8917)}
 .van-sku-actions .van-button--danger{background:-webkit-gradient(linear,left top, right top,from(#ff6034),to(#ee0a24));background:-o-linear-gradient(left,#ff6034,#ee0a24);background:linear-gradient(to right,#ff6034,#ee0a24)}
+.ct-page {
+  padding: 20rpx;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.ct-lab-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.ct-lab-item__button {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 140rpx;
+        -ms-flex: 0 0 140rpx;
+            flex: 0 0 140rpx;
+}
+.ct-lab-item__text {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: left;
+}
+.van-field__control {
+  line-height: 26px;
+}
+.text-center {
+  text-align: center;
+}
+.big-button {
+  width: 100%;
+  padding: 0 20rpx;
+}
+.text-red {
+  color: #f44;
+}
+.ct-block-details {
+  color: #333;
+}
+.ct-block-details__title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 26px;
+}
+.ct-item-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 8px;
+}
+.ct-item-block__title {
+    color: red;
+    min-width: 4em;
+}
+.ct-item-block__content > ._span {
+    display: block;
+}
+.ct-table {
+  width: 100%;
+}
+.ct-table ._tbody > ._tr {
+    border-bottom: 1px solid #eee;
+}
+.ct-table ._tbody > ._tr > ._td {
+      line-height: 24px;
+}
+.ct-table + ._h4 {
+    margin-top: 20px;
+}
+.ct-content {
+  padding: 0 12rpx;
+}
+.btn-containers {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.btn-containers > .btn-block {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 30%;
+        -ms-flex: 0 0 30%;
+            flex: 0 0 30%;
+}
+.btn-containers > .btn-block--half {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 45%;
+          -ms-flex: 0 0 45%;
+              flex: 0 0 45%;
+}
+.gray-btn.van-button {
+  background: #eee;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 12px;
+  width: 100%;
+  padding: 0;
+}
+.gray-btn.van-button.gray-btn--green {
+    background: #07c160;
+    color: #fff;
+}
+.gray-btn.van-button.gray-btn--red {
+    background: #f44;
+    color: #fff;
+}
+
+.gray-btn .van-button {
+  background: #eee;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 12px;
+  width: 100%;
+  padding: 0;
+}
+.gray-btn.gray-btn--green .van-button {
+  background: #07c160;
+  color: #fff;
+}
+.gray-btn.gray-btn--red .van-button {
+  background: #f44;
+  color: #fff;
+}
+
+.ct-box {
+  background: #fff;
+}
+.ct-box__header {
+    border-top: 2px solid #f44;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #f44;
+    font-size: 16px;
+}
+.mt-medium {
+  margin-top: 20rpx;
+}
+.mb-large {
+  margin-bottom: 40rpx;
+}
+.mt-small {
+  margin-top: 10px;
+}
+.page {
+  background-color: #f7f9f8;
+}
+.readonly-textarea .van-field__control[readonly] {
+  background: #eee;
+  padding: 0 10rpx;
+}
+.load-more-btn {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  line-height: 56rpx;
+}
+.p-0 {
+  padding: 0;
+}
+.has-no-border .van-cell:after {
+  content: none;
+}
 

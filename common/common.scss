@@ -13,6 +13,7 @@
 	
 	&__text {
 		flex: 1;
+		text-align: left;
 	}
 }
 // 重写样式
@@ -81,6 +82,18 @@
   padding: 0 12rpx;
 }
 
+.btn-containers {
+	display: flex;
+	justify-content: space-between;
+	
+	&>.btn-block {
+		flex: 0 0 30%;
+		&--half {
+			flex: 0 0 45%;
+		}
+	}
+}
+
 .gray-btn.van-button {
   background: #eee;
   height: 1.5rem;
@@ -99,6 +112,34 @@
     color: #fff;
   }
 }
+
+/* #ifdef MP-WEIXIN */
+.gray-btn {
+	
+	.van-button {
+		background: #eee;
+		height: 1.5rem;
+		line-height: 1.5rem;
+		font-size: 12px;
+		width: 100%;
+		padding: 0;
+	}
+
+  &.gray-btn--green {
+		.van-button {
+			background: #07c160;
+			color: #fff;
+		}
+  }
+
+  &.gray-btn--red {
+		.van-button {
+			background: #f44;
+			color: #fff;
+		}
+  }
+}
+/* #endif */
 
 .ct-box {
   background: #fff;
@@ -132,5 +173,22 @@
 	.van-field__control[readonly] {
 		background: #eee;
 		padding: 0 10rpx;
+	}
+}
+
+.load-more-btn {
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+	line-height: 56upx;
+}
+
+.p-0 {
+	padding: 0;
+}
+
+.has-no-border .van-cell {
+	&:after {
+		content: none;
 	}
 }

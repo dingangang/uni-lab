@@ -1,7 +1,7 @@
 <template>
   <view class="login-page">
     <h2 class="text-center" style="position: absolute; top: 10vh; width: 100%;">Login</h2>
-    <view>
+    <view class="login-form__container">
       <van-cell-group class="login-form">
         <van-field
           v-model="loginForm.username"
@@ -26,7 +26,7 @@
           </span>
         </van-field>
       </van-cell-group>
-      <view class="text-center">
+      <view class="text-center login-btn__container">
         <van-button
           :loading="isLoading"
           class="login-btn"
@@ -90,9 +90,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .login-form {
-  margin: 0 10%;
+  
+  &__container {
+	  padding: 0 40upx;
+  }
 }
 .van-nav-bar .van-icon.white-icon {
   color: #fff;
@@ -104,8 +107,10 @@ export default {
   background-size: 100% 200px;
 }
 .login-btn {
-  width: 80%;
-  margin-top: 30px;
+  
+  &__container {
+	margin-top: 40upx;
+  }
 }
 .text-center {
 	text-align: center;

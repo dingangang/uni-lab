@@ -1,6 +1,12 @@
 <template>
   <div class="page">
-    <van-collapse v-model="activeNames" accordion>
+		<!-- #ifdef H5 -->
+		<van-collapse v-model="activeNames" accordion>
+		<!-- #endif -->
+		
+		<!-- #ifdef MP-WEIXIN -->
+			<van-collapse :value="activeNames" accordion  @change="collapseChange">
+		<!-- #endif -->
       <van-collapse-item title="实验室基本信息" name="1">
         <div class="ct-block-details">
           <p class="ct-item-block">
@@ -205,8 +211,13 @@
       </van-collapse-item>
     </van-collapse>
 
-    <div class="mt-large text-center" style="margin: 0 20px">
-      <van-button type="primary" style="width: 100%" @tap="handleClick">开始巡查</van-button>
+    <div class="big-btn__container">
+      <van-button
+				type="primary"
+				class="big-btn"
+				@tap="handleClick"
+				size="large"
+			>开始巡查</van-button>
     </div>
   </div>
 </template>
@@ -224,6 +235,9 @@ export default {
 		})
 	},
   methods: {
+		/**
+		 * 跳转页面
+		 */
     handleClick: function() {
       console.log('跳转至巡查页面')
       uni.navigateTo({
@@ -232,11 +246,25 @@ export default {
       	fail: () => {},
       	complete: () => {}
       });
-    }
+    },
+		/**
+		 * 微信小程序用折叠面板变化方法
+		 */
+		collapseChange(event) {
+			console.log(event);
+			this.activeNames = event.detail
+		}
   }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.big-btn {
+	width: 100%;
+	
+	&__container {
+		text-align: center;
+		margin: 40upx 20upx;
+	}
+}
 </style>

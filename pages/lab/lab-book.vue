@@ -2,13 +2,11 @@
 	<view class="ct-page">
 		<van-cell-group>
 		  <van-cell title="实验室名称" :value="labInfo.title" />
-		  <van-field
-		    readonly
-		    clickable
-		    label="预约时间"
+		  <van-cell
+		    title="预约时间"
+				value-class="text-left"
+				title-class="x-limit-title"
 		    :value="labInfo.time"
-		    placeholder="请选择时间"
-				input-align="right"
 		    @click="showTimePicker = true"
 		  />
 			<van-field
@@ -23,14 +21,19 @@
 		
 		<view class="text-center" style="margin-top: 20rpx;">
 			<van-button
+				size="large"
 			  type="primary"
 			  class="big-button"
 				@tap="handleSubmit"
 				:loading="isBtnLoading"
 			>提交预约</van-button>
 		</view>
-		
+		<!-- #ifdef H5 -->
 		<van-popup v-model="showTimePicker" position="bottom">
+		<!-- #endif -->
+		<!-- #ifdef MP-WEIXIN -->
+		<van-popup :show="showTimePicker" position="bottom">
+		<!-- #endif -->
 		  <van-datetime-picker
 		    v-model="pickerTime"
 		    type="datetime"

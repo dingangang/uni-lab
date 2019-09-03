@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-button": "/wxcomponents/vant-weapp/button/index"
+  },
+  "component": true
+}

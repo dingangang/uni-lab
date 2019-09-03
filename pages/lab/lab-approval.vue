@@ -10,7 +10,13 @@
           @click="showPicker = true"
           is-link
         />
+				<!-- #ifdef H5 -->
         <van-popup v-model="showPicker" position="bottom">
+				<!-- #endif -->
+				<!-- #ifdef MP-WEIXIN -->
+				<van-popup :show="showPicker" position="bottom">
+				<!-- #endif -->
+				
           <van-picker
             show-toolbar
             :columns="columns"
@@ -28,33 +34,35 @@
         </van-cell>
         <van-cell
           title="巡查结果"
+					use-label-slot
         >
           <view slot="label">
-            <van-row :gutter="8" type="flex" justify="space-between">
-              <van-col span="8">
-                <van-button
-                  round
-                  class="gray-btn"
-                  :class="activeBtn === '1'? 'gray-btn--green' :''"
-                  @click="handleChangeBtn('1')"
-                >巡查正常</van-button>
-              </van-col>
-              <van-col span="8">
-                <van-button
-                  round
-                  class="gray-btn"
-                  :class="activeBtn === '2'? 'gray-btn--green' :''"
-                  @click="handleChangeBtn('2')"
-                >存在问题</van-button>
-              </van-col>
-              <van-col span="8">
-                <van-button
-                  round
-                  class="gray-btn"
-                  :class="activeBtn === '3'? 'gray-btn--green' :''"
-                  @click="handleChangeBtn('3')"
-                >优秀实验室</van-button></van-col>
-            </van-row>
+						<view class="btn-containers">
+								<view class="btn-block">
+									<van-button
+										round
+										class="gray-btn"
+										:class="activeBtn === '1'? 'gray-btn--green' :''"
+										@click="handleChangeBtn('1')"
+									>巡查正常</van-button>
+								</view>
+								<view class="btn-block">
+									<van-button
+										round
+										class="gray-btn"
+										:class="activeBtn === '2'? 'gray-btn--green' :''"
+										@click="handleChangeBtn('2')"
+									>存在问题</van-button>
+								</view>
+								<view class="btn-block">
+									<van-button
+										round
+										class="gray-btn"
+										:class="activeBtn === '3'? 'gray-btn--green' :''"
+										@click="handleChangeBtn('3')"
+									>优秀实验室</van-button>
+								</view>
+						</view>
           </view>
         </van-cell>
       </van-cell-group>
@@ -78,41 +86,43 @@
             </van-cell>
             <van-cell
               title="隐患等级"
+							use-label-slot
             >
               <view slot="label">
-                <van-row type="flex" justify="space-around">
-                  <van-col span="10">
-                    <van-button
-                      round
-                      class="gray-btn"
-                      :class="trouble.grade === '1'? 'gray-btn--red' :''"
-                      @click="handleGradeChange(trouble, '1')"
-                    >紧急</van-button>
-                  </van-col>
-                  <van-col span="10">
-                    <van-button
-                      round
-                      class="gray-btn"
-                      :class="trouble.grade === '2'? 'gray-btn--red' :''"
-                      @click="handleGradeChange(trouble, '2')"
-                    >普通</van-button>
-                  </van-col>
-                </van-row>
+								<view class="btn-containers">
+									<view class="btn-block btn-block--half">
+										<van-button
+										  round
+										  class="gray-btn"
+										  :class="trouble.grade === '1'? 'gray-btn--red' :''"
+										  @click="handleGradeChange(trouble, '1')"
+										>紧急</van-button>
+									</view>
+									<view class="btn-block btn-block--half">
+										<van-button
+										  round
+										  class="gray-btn"
+										  :class="trouble.grade === '2'? 'gray-btn--red' :''"
+										  @click="handleGradeChange(trouble, '2')"
+										>普通</van-button>
+									</view>
+								</view>
               </view>
             </van-cell>
             <van-cell
               title="隐患描述"
+							use-label-slot
             >
               <view slot="label">
                 <van-field
                   v-model="trouble.content"
                   type="textarea"
-                  class="p-0"
+                  class="p-0 has-no-border"
                   placeholder="请输入隐患内容"
                 />
               </view>
             </van-cell>
-            <van-cell>
+            <van-cell use-label-slot>
               <template slot="title">
                 <view style="display: flex; justify-content: space-between">
                   <span>隐患照片</span>
@@ -120,25 +130,41 @@
                 </view>
               </template>
               <view slot="label">
+								<!-- #ifdef H5 -->
                 <van-uploader
                   :file-list="trouble.fileList"
                   :after-read="afterRead"
                   :before-delete="handleDelImg"
                   :max-count="9"
                 />
+								<!-- #endif -->
+								<!-- #ifdef MP-WEIXIN -->
+								<ct-uploader
+									:file-list="trouble.fileList"
+									:after-read="afterRead"
+									:before-delete="handleDelImg"
+									:max-count="9"
+								></ct-uploader>
+								<!-- #endif -->
               </view>
             </van-cell>
           </view>
         </van-cell-group>
         <view class="mt-step mb-large p-small">
           <van-button
+						size="large"
             type="info"
             style="border-radius: 4px; width: 100%"
+						class="big-btn"
             @click="handleAddTrouble"
           >添加隐患</van-button>
+					<view class="mt-small">
+						
+					</view>
           <van-button
+						size="large"
             type="primary"
-            class="mt-small"
+            class="big-btn"
             style="border-radius: 4px; width: 100%"
             :loading="isUploading"
             @click="handleUpload"
@@ -150,7 +176,11 @@
 </template>
 
 <script>
+	import ctUploader from '@/components/ct-uploader.vue'
 export default {
+	components: {
+		ctUploader
+	},
   data() {
     return {
       activeBtn: '2',
@@ -170,7 +200,7 @@ export default {
       isUploading: false,
       checkValue: '前往查看',
       showPicker: false,
-      columns: ['前往查看', '人员上报']
+      columns: ['前往查看', '人员上报'],
     }
   },
 	onLoad() {
@@ -249,9 +279,17 @@ export default {
      * picker选定事件
      */
     onConfirm(value) {
+			console.log("value: " + JSON.stringify(value));
+			// #ifdef H5
       this.checkValue = value
+			// #endif
+			
+			// #ifdef MP-WEIXIN
+			this.checkValue = value.detail.value
+			// #endif
+			
       this.showPicker = false
-    }
+    },
   }
 }
 </script>
