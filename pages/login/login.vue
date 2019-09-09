@@ -1,6 +1,8 @@
 <template>
   <view class="login-page">
-    <h2 class="text-center" style="position: absolute; top: 10vh; width: 100%;">Login</h2>
+    <h2 class="text-center" style="position: absolute; top: 10vh; width: 100%;">
+			师大物理实验室
+		</h2>
     <view class="login-form__container">
       <van-cell-group class="login-form">
         <van-field
@@ -47,8 +49,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: 'admin',
-        password: '1'
+        username: 'teacher',
+        password: '123456'
       },
       isLoading: false
     }
@@ -58,18 +60,28 @@ export default {
      * 登录方法
      */
     login() {
-      // this.$store.dispatch('login', this.loginForm)
-      //   .then(res => {
-      //     console.log('登录返回', res)
-      //     this.$router.push({ path: '/main' })
-      //   }).catch(error => {
-      //     this.$message.error(error)
-      //     this.isLoading = false
-      //   })
 	  // 模拟登录
 	  // 这里路由跳转由uniapp代理 实验室界面是属于tabbar接管的页面。所以只能用触发tabbar来控制
 	  const $vm = this
 	  $vm.isLoading = true
+		// 模拟选择角色
+		switch (this.loginForm.username) {
+			case 'teacher':
+				$vm.$store.commit('SET_ROLE', 'teacher')
+				break
+			case 'student':
+				$vm.$store.commit('SET_ROLE', 'student')
+				break
+			default:
+				uni.showToast({
+				    title: '用户或密码错误',
+				    duration: 2000,
+						icon: 'none'
+				});
+				$vm.isLoading = false
+				return
+		}
+		
 	  setTimeout(function() {
 		console.log('登陆成功,跳转到实验室界面');
 		uni.switchTab({

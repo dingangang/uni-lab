@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App'
+import store from './store'
 // #ifdef H5
 import Vant from 'vant';
-// #endif
-
-// #ifdef MP-WEIXIN
-
 // #endif
 import dayjs from 'dayjs'
 
@@ -20,6 +17,7 @@ Vue.prototype.$dayjs = dayjs
 App.mpType = 'app';
 
 const app = new Vue({
-    ...App
+	store,
+	...App
 })
 app.$mount()

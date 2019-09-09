@@ -3,6 +3,24 @@
 		<van-cell-group>
 			<van-field
 				class="readonly-textarea"
+				v-model="affairId"
+				label="业务编号"
+				readonly
+			/>
+			<van-field
+				class="readonly-textarea"
+				v-model="affairName"
+				label="业务名称"
+				readonly
+			/>
+			<van-field
+				class="readonly-textarea"
+				v-model="affairPerson"
+				:label="role==='teacher'?'申请人':'审批人'"
+				readonly
+			/>
+			<van-field
+				class="readonly-textarea"
 				v-model="message"
 				label="审批内容"
 				type="textarea"
@@ -19,6 +37,7 @@
 				placeholder="审批原因"
 				rows="4"
 				autosize
+				:readonly="role!=='teacher'"
 			/>
 			<!-- #endif -->
 			
@@ -34,7 +53,7 @@
 			/>
 			<!-- #endif -->
 		</van-cell-group>
-		<view class="bottom-btn-container">
+		<view class="bottom-btn-container" v-if="role==='teacher'">
 			<view class="mt-small">
 				<van-button
 					size="large"
@@ -61,8 +80,11 @@
 	export default {
 		data() {
 			return {
-				message: "审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容审批内容",
-				reason: "",
+				affairId: 'LY201810261230301001',
+				affairName: '普通耗材领用',
+				affairPerson: '张亮',
+				message: '化学实验室从本部-701仓库领用纳米材料100g',
+				reason: '',
 				isPassLoading: false,
 				isRejectLoading: false
 			}
@@ -70,8 +92,13 @@
 		onLoad(e) {
 			// 设置标题
 			uni.setNavigationBarTitle({
-				title:`事项${e.item}`
+				title:`审批详情`
 			})
+		},
+		computed: {
+			role: function() {
+				return this.$store.getters.role
+			}
 		},
 		methods: {
 			/**

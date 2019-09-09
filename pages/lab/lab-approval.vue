@@ -28,7 +28,7 @@
           value-class="text-left"
           title-class="x-limit-title"
         >
-          东四316-2
+          物理科技楼123
           <van-icon slot="right-icon" size="18px" name="scan" />
         </van-cell>
         <van-cell
@@ -175,11 +175,15 @@
 </template>
 
 <script>
+	// #ifdef MP-WEIXIN
 	import ctUploader from '@/components/ct-uploader.vue'
+	// #endif
 export default {
+	// #ifdef MP-WEIXIN
 	components: {
 		ctUploader
 	},
+	// #endif
   data() {
     return {
       activeBtn: '2',

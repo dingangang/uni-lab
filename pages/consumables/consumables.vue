@@ -13,7 +13,10 @@
 		    >
 				<view class="ct-lab-item">
 					<text class="ct-lab-item__text">   
-						{{item.type === '1' ? '耗材用品': '废液废品'}}{{item.name}}
+						{{item.name}}
+					</text>
+					<text class="ct-lab-item__type ct-lab-item__type--long">
+						{{item.type}}
 					</text>
 					<van-button
 						type="primary"
@@ -65,9 +68,17 @@
 			}
 		},
 		onLoad() {
+			uni.setNavigationBarTitle({
+				title: '耗材管理列表'
+			})
 			// #ifdef MP-WEIXIN
 			this.init()
 			// #endif
+		},
+		computed: {
+			role: function() {
+				return this.$store.getters.role
+			}
 		},
     methods: {
 		/**
@@ -79,21 +90,59 @@
 				return
 			}
 			// 异步更新数据
-			setTimeout(() => {
-				for (let i = 0; i < 10; i++) {
-					this.list.push({
-						name: this.list.length + 1,
-						type: Math.random() * 10 > 5 ? '1': '2'
-					});
-				}
-				// 加载状态结束
-				this.loading = false;
-
-				// 数据全部加载完成
-				if (this.list.length >= 40) {
-					this.finished = true;
-				}
-		    }, 500);
+			// 			setTimeout(() => {
+			// 				for (let i = 0; i < 10; i++) {
+			// 					this.list.push({
+			// 						name: this.list.length + 1,
+			// 						type: Math.random() * 10 > 5 ? '1': '2'
+			// 					});
+			// 				}
+			// 				// 加载状态结束
+			// 				this.loading = false;
+			// 
+			// 				// 数据全部加载完成
+			// 				if (this.list.length >= 40) {
+			// 					this.finished = true;
+			// 				}
+			// 		    }, 500);
+			
+			// 填充静态数据
+			this.loading = false
+			this.finished = true
+			// 按角色填充
+			if (this.role === 'teacher') {
+				this.list = [
+					{
+						id: '1',
+						name: 'HS201810261230301001',
+						type: '有机废液'
+					},{
+						id: '2',
+						name: 'HS201810261230301002',
+						type: '无机废液'
+					},{
+						id: '3',
+						name: 'HS201810261230301003',
+						type: '普通废液'
+					},
+				]
+			} else if (this.role === 'student') {
+				this.list = [
+					{
+						id: '1',
+						name: 'LY201810261230301001',
+						type: '有机废液'
+					},{
+						id: '2',
+						name: 'LY201810261230301002',
+						type: '无机废液'
+					},{
+						id: '3',
+						name: 'LY201810261230301003',
+						type: '普通废液'
+					},
+				]
+			}
 		},
 		/**
 		 * 去耗材详情页面

@@ -2,6 +2,11 @@
 	<view class="ct-content">
 		<van-cell-group>
 			<van-field
+				:label="role==='teacgher' ? '回收单号' : '领用单号'"
+				v-model="form.billId"
+				readonly
+			/>
+			<van-field
 				label="物品名称"
 				v-model="form.name"
 				readonly
@@ -12,15 +17,26 @@
 				readonly
 			/>
 			<van-field
+				v-if="role==='student'"
+				label="所属仓储"
+				v-model="form.warehouse"
+				readonly
+			/>
+			<van-field
+				v-if="role==='student'"
+				label="领用仓储"
+				v-model="form.warehouse"
+				readonly
+			/>
+			<van-field
+				v-if="role==='student'"
 				label="存量信息"
 				v-model="form.stock"
 				readonly
 			/>
 			<van-field
-				v-if="type==='1'"
 				label="数量"
 				v-model="form.number"
-				placeholder="请输入数量"
 			/>
 		</van-cell-group>
 		<view class="mt-medium bottom-btn-container">
@@ -29,14 +45,14 @@
 				type="primary"
 				@tap="handleReceive"
 				:loading="isReceiveLoading"
-				v-if="type==='1'"
-			>领用</van-button>
+				v-if="role==='student'"
+			>申请领用</van-button>
 			<van-button
 				size="large"
 				type="primary"
 				@tap="handleRecycle"
 				:loading="isReceiveLoading"
-				v-if="type==='2'"
+				v-if="role==='teacher'"
 			>回收</van-button>
 		</view>
 	</view>
@@ -48,27 +64,40 @@
 			return {
 				type: '',
 				form: {
-					name: '',
-					unit: '化学学院',
-					stock: '3',
-					number: '',
+					billId: 'HS201810261230301001',
+					name: '有机肥料',
+					unit: '01-机械学院',
+					number: '300ml',
 				},
 				isReceiveLoading: false
 			}
 		},
 		onLoad(e) {
-			console.log(e)
-			let str = ''
-			if (e.type === '1') {
-				str += '耗材用品'
-			} else if (e.type === '2') {
-				str += '废液废品'
+			if (this.role === 'teahcer') {
+				this.form = {
+					billId: 'HS201810261230301001',
+					name: '有机肥料',
+					unit: '01-机械学院',
+					number: '300ml',
+				}
+			} else if (this.role === 'student') {
+				this.form = {
+					billId: 'LY201810261230301001',
+					name: '纳米材料',
+					unit: '材料学院',
+					warehouse: '本部-701',
+					stock: '1000g',
+					number: '30g',
+				}
 			}
 			uni.setNavigationBarTitle({
-				title:`${str} ${e.item}`
+				title:'耗材详情'
 			})
-			this.$set(this.form, 'name', `${str} ${e.item}`)
-			this.type = e.type
+		},
+		computed: {
+			role: function() {
+				return this.$store.getters.role
+			}
 		},
 		methods: {
 			handleReceive() {

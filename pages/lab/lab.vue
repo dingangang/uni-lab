@@ -13,7 +13,7 @@
 		    >
 				<view class="ct-lab-item" @tap="goLabDetails(item)">
 					<text class="ct-lab-item__text">   
-						实验室{{item}}
+						{{item.name}}
 					</text>
 					<van-button
 						type="primary"
@@ -36,7 +36,7 @@
 		    >
 				<view class="ct-lab-item" @tap="goLabDetails(item)">
 					<text class="ct-lab-item__text">   
-						实验室{{item}}
+						{{item.name}}
 					</text>
 					<van-button
 						type="primary"
@@ -65,12 +65,20 @@
 			}
 		},
 		onLoad() {
+			uni.setNavigationBarTitle({
+				title: '实验室列表'
+			})
 			// #ifdef MP-WEIXIN
 			this.init()
 			// #endif
 		},
 		onReachBottom() {
 			this.init()
+		},
+		computed: {
+			role: function() {
+				return this.$store.getters.role
+			}
 		},
 		methods: {
 			/**
@@ -79,18 +87,41 @@
 			init() {
 				// 这里包含了滚动加载，文档地址 https://youzan.github.io/vant/#/zh-CN/list
 				// 异步更新数据
-				setTimeout(() => {
-					for (let i = 0; i < 15; i++) {
-						this.list.push(this.list.length + 1);
-					}
-					// 加载状态结束
-					this.loading = false;
-
-					// 数据全部加载完成
-					if (this.list.length >= 40) {
-						this.finished = true;
-					}
-				}, 500);
+				// 				setTimeout(() => {
+				// 					for (let i = 0; i < 15; i++) {
+				// 						this.list.push(this.list.length + 1);
+				// 					}
+				// 					// 加载状态结束
+				// 					this.loading = false;
+				// 
+				// 					// 数据全部加载完成
+				// 					if (this.list.length >= 40) {
+				// 						this.finished = true;
+				// 					}
+				// 				}, 500);
+				if (this.finished) {
+					return
+				}
+				
+				
+				// 填充静态数据
+				this.loading = false
+				this.finished = true
+				this.list = [
+					{
+						id: '1',
+						name: '纳米氧化物光实验室'
+					},{
+						id: '2',
+						name: '材料实验室'
+					},{
+						id: '3',
+						name: '物理实验室'
+					},{
+						id: '4',
+						name: '化学实验室'
+					},
+				]
 			},
 			/**
 			 * 处理预定按钮点击
@@ -99,7 +130,7 @@
 			goBookLab(lab) {
 				console.log('传入的实验室的信息是', lab)
 				uni.navigateTo({
-					url: `./lab-book?lab=${lab}`,
+					url: `./lab-book?labid=${lab.id}`,
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
@@ -112,7 +143,7 @@
 			goLabDetails(lab) {
 				console.log('传入的实验室的信息是', lab)
 				uni.navigateTo({
-					url: `./lab-details?lab=${lab}`,
+					url: `./lab-details?labid=${lab.id}`,
 					success: res => {},
 					fail: () => {},
 					complete: () => {}

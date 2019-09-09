@@ -24,7 +24,7 @@
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验室位置：</span>
             <span class="ct-item-block__content">
-              <span>天赐庄校区物理科技楼123123</span>
+              <span>天赐庄校区物理科技楼123</span>
             </span>
           </p>
           <p class="ct-item-block">
@@ -229,7 +229,8 @@ export default {
       activeNames: '1'
     }
   },
-	onLoad() {
+	onLoad(e) {
+		console.log(e);
 		uni.setNavigationBarTitle({
 			title: '纳米氧化物光电实验室'
 		})

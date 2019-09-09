@@ -13,7 +13,7 @@
 		    >
 				<view class="ct-lab-item" @tap.stop="goLabDetails(item)">
 					<text class="ct-lab-item__text">   
-						考试{{item}}
+						{{item.name}}
 					</text>
 				</view>
 			</van-cell>
@@ -49,6 +49,9 @@
 			}
 		},
 		onLoad() {
+			uni.setNavigationBarTitle({
+				title: '考试列表'
+			})
 			// #ifdef MP-WEIXIN
 			this.init()
 			// #endif
@@ -59,24 +62,35 @@
 		 */
 		init() {
 			// 这里包含了滚动加载，文档地址 https://youzan.github.io/vant/#/zh-CN/list
-			
 			if (this.finished) {
 				return
 			}
 			
 			// 异步更新数据
-			setTimeout(() => {
-				for (let i = 0; i < 10; i++) {
-					this.list.push(this.list.length + 1);
-				}
-				// 加载状态结束
-				this.loading = false;
-
-				// 数据全部加载完成
-				if (this.list.length >= 40) {
-					this.finished = true;
-				}
-		    }, 500);
+			// 			setTimeout(() => {
+			// 				for (let i = 0; i < 10; i++) {
+			// 					this.list.push(this.list.length + 1);
+			// 				}
+			// 				// 加载状态结束
+			// 				this.loading = false;
+			// 
+			// 				// 数据全部加载完成
+			// 				if (this.list.length >= 40) {
+			// 					this.finished = true;
+			// 				}
+			// 		    }, 500);
+			// 填充静态数据
+			this.loading = false
+			this.finished = true
+			this.list = [
+				{
+					id: '1',
+					name: '实验室安全考试'
+				},{
+					id: '2',
+					name: '实验室安全练习'
+				},
+			]
 		},
 		/**
 		 * 去考试详情页面
@@ -85,6 +99,10 @@
 		goLabDetails(item) {
 			console.log('传入的考试的信息是', item)
 			console.log("跳转到对应的考试界面");
+			uni.showToast({
+				title: `前往${item.name}考试页`,
+				icon: 'none'
+			})
 		}
 		
     }

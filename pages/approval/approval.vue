@@ -13,16 +13,27 @@
 			>
 				<view class="ct-lab-item">
 					<text class="ct-lab-item__text">   
-						审批事项{{item}}
+						{{item.name}}
+					</text>
+					<text class="ct-lab-item__type">   
+						{{item.type}}
 					</text>
 					<van-button
-						type="primary"
+						v-if="role==='teacher'"
+						:type="item.status === 'done' ? 'primary' : 'info'"
 						size="small"
 						class="ct-lab-item__button"
 						@tap.stop="goLabDetails(item)"
 					>
-						处理
+						{{item.statusDesc}}
 					</van-button>
+					<text
+						v-else
+						class="ct-lab-item__status"
+						:class="`ct-lab-item__status--${item.status}`"
+					>
+						{{item.statusDesc}}
+					</text>
 				</view>
 			</van-cell>
 		</van-list>
@@ -65,12 +76,20 @@
 			}
 		},
 		onLoad() {
+			uni.setNavigationBarTitle({
+				title: '业务审批列表'
+			})
 			// #ifdef MP-WEIXIN
 			this.init()
 			// #endif
 		},
 		onReachBottom() {
 			this.init()
+		},
+		computed: {
+			role: function() {
+				return this.$store.getters.role
+			}
 		},
     methods: {
 		/**
@@ -84,18 +103,49 @@
 			}
 			
 			// 异步更新数据
-			setTimeout(() => {
-				for (let i = 0; i < 10; i++) {
-					this.list.push(this.list.length + 1);
-				}
-				// 加载状态结束
-				this.loading = false;
-
-				// 数据全部加载完成
-				if (this.list.length >= 40) {
-					this.finished = true;
-				}
-		    }, 500);
+			// 			setTimeout(() => {
+			// 				for (let i = 0; i < 10; i++) {
+			// 					this.list.push(this.list.length + 1);
+			// 				}
+			// 				// 加载状态结束
+			// 				this.loading = false;
+			// 
+			// 				// 数据全部加载完成
+			// 				if (this.list.length >= 40) {
+			// 					this.finished = true;
+			// 				}
+			// 		    }, 500);
+			
+			// 填充静态数据
+			this.loading = false
+			this.finished = true
+			this.list = [
+				{
+					id: '1',
+					name: '2019上学年度耗材需求申购',
+					type: '申购',
+					status: 'wait',
+					statusDesc: '未处理'
+				},{
+					id: '2',
+					name: '2019上学年度耗材需求申购',
+					type: '申购',
+					status: 'done',
+					statusDesc: '已处理'
+				},{
+					id: '3',
+					name: '化学品领用',
+					type: '领用',
+					status: 'wait',
+					statusDesc: '未处理'
+				},{
+					id: '4',
+					name: '经管实验申报安排',
+					type: '申报',
+					status: 'wait',
+					statusDesc: '未处理'
+				},
+			]
 		},
 		/**
 		 * 去审批事项详情页面

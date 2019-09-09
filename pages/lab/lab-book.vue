@@ -75,9 +75,9 @@
 			const $vm = this
 			return {
 				labInfo: {
-					title: 'XX实验室',
+					title: '纳米氧化物光实验室',
 					time:  '(明天) ' + $vm.$dayjs(new Date).add(1,'day').format('YYYY-MM-DD HH:mm:ss'),
-					message: ''
+					message: '纳米物理实验'
 				},
 				minDate: new Date(),
 				maxDate: new Date(2020, 10, 1),
@@ -93,7 +93,7 @@
 			console.log(e)
 			// 获取实验室名称后为标题赋值
 			uni.setNavigationBarTitle({
-			    title: `实验室${e.lab}`
+			    title: `纳米氧化物光实验室`
 			});
 		},
 		methods: {
