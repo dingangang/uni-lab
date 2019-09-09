@@ -85,7 +85,7 @@ export default {
 	  setTimeout(function() {
 		console.log('登陆成功,跳转到实验室界面');
 		uni.switchTab({
-			url: '../lab/lab',
+			url: '../approval/approval',
 			success: res => {},
 			fail: () => {},
 			complete: () => {}

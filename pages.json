@@ -128,15 +128,15 @@
 	    "borderStyle": "black",
 	    "backgroundColor": "#ffffff",
 	    "list": [{
-	        "pagePath": "pages/lab/lab",
-	        "iconPath": "static/images/lab.png",
-	        "selectedIconPath": "static/images/lab-selected.png",
-	        "text": "实验室"
-	    }, {
 	        "pagePath": "pages/approval/approval",
 	        "iconPath": "static/images/approval.png",
 	        "selectedIconPath": "static/images/approval-selected.png",
 	        "text": "业务审批"
+	    }, {
+	        "pagePath": "pages/lab/lab",
+	        "iconPath": "static/images/lab.png",
+	        "selectedIconPath": "static/images/lab-selected.png",
+	        "text": "实验室"
 	    }, {
 	        "pagePath": "pages/consumables/consumables",
 	        "iconPath": "static/images/consumables.png",
