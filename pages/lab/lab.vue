@@ -28,30 +28,6 @@
 		</van-list>
 		<!-- #endif -->
 		
-		<!-- #ifdef MP-WEIXIN -->
-		<van-cell-group>
-		    <van-cell
-				v-for="(item, index) in list"
-				:key="index"
-		    >
-				<view class="ct-lab-item" @tap="goLabDetails(item)">
-					<text class="ct-lab-item__text">   
-						{{item.name}}
-					</text>
-					<van-button
-						type="primary"
-						size="small"
-						class="ct-lab-item__button"
-						@tap.stop="goBookLab(item)"
-					>
-						预约
-					</van-button>
-				</view>
-		    </van-cell>
-		</van-cell-group>
-		<view :hidden="finished" @tap="init" class="load-more-btn">加载更多</view>
-		<view :hidden="!finished" class="load-more-btn">没有更多了</view>
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -68,9 +44,6 @@
 			uni.setNavigationBarTitle({
 				title: '实验室列表'
 			})
-			// #ifdef MP-WEIXIN
-			this.init()
-			// #endif
 		},
 		onReachBottom() {
 			this.init()

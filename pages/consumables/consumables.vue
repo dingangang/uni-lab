@@ -1,6 +1,5 @@
 <template>
 	<view class="ct-page">
-		<!-- #ifdef H5 -->
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
@@ -29,32 +28,7 @@
 				</view>
 			</van-cell>
 		</van-list>
-		<!-- #endif -->
 		
-		<!-- #ifdef MP-WEIXIN -->
-		<van-cell-group>
-			<van-cell
-				v-for="(item, index) in list"
-				:key="index"
-			  >
-				<view class="ct-lab-item">
-					<text class="ct-lab-item__text">   
-						{{item.type === '1' ? '耗材用品': '废液废品'}}{{item.name}}
-					</text>
-					<van-button
-						type="primary"
-						size="small"
-						class="ct-lab-item__button"
-						@tap.stop="goLabDetails(item)"
-					>
-						处理
-					</van-button>
-				</view>
-			</van-cell>
-		</van-cell-group>
-		<view :hidden="finished" @tap="init" class="load-more-btn">加载更多</view>
-		<view :hidden="!finished" class="load-more-btn">没有更多了</view>
-		<!-- #endif -->
 	</view>
 </template>
 

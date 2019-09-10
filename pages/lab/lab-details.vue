@@ -1,12 +1,6 @@
 <template>
   <div class="page">
-		<!-- #ifdef H5 -->
 		<van-collapse v-model="activeNames" accordion>
-		<!-- #endif -->
-		
-		<!-- #ifdef MP-WEIXIN -->
-			<van-collapse :value="activeNames" accordion  @change="collapseChange">
-		<!-- #endif -->
       <van-collapse-item title="实验室基本信息" name="1">
         <div class="ct-block-details">
           <p class="ct-item-block">

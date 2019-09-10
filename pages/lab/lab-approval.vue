@@ -9,13 +9,7 @@
           :value="checkValue"
           @tap="showPicker = true"
         />
-				<!-- #ifdef H5 -->
         <van-popup v-model="showPicker" position="bottom">
-				<!-- #endif -->
-				<!-- #ifdef MP-WEIXIN -->
-				<van-popup :show="showPicker" position="bottom">
-				<!-- #endif -->
-				
           <van-picker
             show-toolbar
             :columns="columns"
@@ -136,14 +130,6 @@
                   :before-delete="handleDelImg"
                   :max-count="9"
                 />
-								<!-- #endif -->
-								<!-- #ifdef MP-WEIXIN -->
-								<ct-uploader
-									:file-list="trouble.fileList"
-									:after-read="afterRead"
-									:before-delete="handleDelImg"
-									:max-count="9"
-								></ct-uploader>
 								<!-- #endif -->
               </view>
             </van-cell>

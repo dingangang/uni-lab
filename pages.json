@@ -6,120 +6,52 @@
 				"navigationStyle":"custom",
 				"h5":{
 					"titleView": false
-				},
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index"
 				}
 			}
 		},
 		{
 			"path": "pages/lab/lab",
 			"style": {
-				"onReachBottomDistance": 100,
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-cell": "/wxcomponents/vant-weapp/cell/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index"
-				}
+				"onReachBottomDistance": 100
 			}
 		},
 		{
 			"path": "pages/lab/lab-book",
 			"style": {
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index",
-					"van-cell": "/wxcomponents/vant-weapp/cell/index",
-					"van-datetime-picker": "/wxcomponents/vant-weapp/datetime-picker/index",
-					"van-popup": "/wxcomponents/vant-weapp/popup/index"
-				}
 			}
 		},{
 			"path": "pages/lab/lab-details",
 			"style": {
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-collapse": "/wxcomponents/vant-weapp/collapse/index",
-					"van-collapse-item": "/wxcomponents/vant-weapp/collapse-item/index",
-					"van-popup": "/wxcomponents/vant-weapp/popup/index",
-					"van-picker": "/wxcomponents/vant-weapp/picker/index"
-				}
 			}
 		},{
 			"path": "pages/lab/lab-approval",
 			"style": {
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell": "/wxcomponents/vant-weapp/cell/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-popup": "/wxcomponents/vant-weapp/popup/index",
-					"van-picker": "/wxcomponents/vant-weapp/picker/index",
-					"van-icon": "/wxcomponents/vant-weapp/icon/index",
-					"van-row": "/wxcomponents/vant-weapp/row/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index"
-				}
 			}
 		},
 		{
 			"path" : "pages/approval/approval",
 			"style" : {
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-cell": "/wxcomponents/vant-weapp/cell/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index"
-				}
 			}
 		},
 		{
 			"path" : "pages/approval/approval-details",
 			"style" : {
-				"usingComponents": {
-					"van-button": "/wxcomponents/vant-weapp/button/index",
-					"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-					"van-cell": "/wxcomponents/vant-weapp/cell/index",
-					"van-field": "/wxcomponents/vant-weapp/field/index",
-					"van-row": "/wxcomponents/vant-weapp/row/index",
-					"van-col": "/wxcomponents/vant-weapp/col/index"
-				}
 			}
 		},
 		{
-				"path" : "pages/consumables/consumables",
-				"style" : {
-					"usingComponents": {
-						"van-button": "/wxcomponents/vant-weapp/button/index",
-						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-						"van-cell": "/wxcomponents/vant-weapp/cell/index",
-						"van-field": "/wxcomponents/vant-weapp/field/index"
-					}
-				}
+			"path" : "pages/consumables/consumables",
+			"style" : {
+			}
 		},
 		{
-				"path" : "pages/consumables/consumables-details",
-				"style" : {
-					"usingComponents": {
-						"van-button": "/wxcomponents/vant-weapp/button/index",
-						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-						"van-cell": "/wxcomponents/vant-weapp/cell/index",
-						"van-field": "/wxcomponents/vant-weapp/field/index"
-					}
-				}
+			"path" : "pages/consumables/consumables-details",
+			"style" : {
+			}
 		},
 		{
-				"path" : "pages/exam/exam",
-				"style" : {
-					"usingComponents": {
-						"van-button": "/wxcomponents/vant-weapp/button/index",
-						"van-cell-group": "/wxcomponents/vant-weapp/cell-group/index",
-						"van-cell": "/wxcomponents/vant-weapp/cell/index",
-						"van-field": "/wxcomponents/vant-weapp/field/index"
-					}
-				}
+			"path" : "pages/exam/exam",
+			"style" : {
+			}
 		}
     ],
 	"tabBar": {

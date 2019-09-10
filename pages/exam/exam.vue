@@ -1,6 +1,5 @@
 <template>
 	<view class="ct-page">
-		<!-- #ifdef H5 -->
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
@@ -18,24 +17,6 @@
 				</view>
 			</van-cell>
 		</van-list>
-		<!-- #endif -->
-		
-		<!-- #ifdef MP-WEIXIN -->
-		<van-cell-group>
-			<van-cell
-				v-for="(item, index) in list"
-				:key="index"
-			  >
-				<view class="ct-lab-item" @tap.stop="goLabDetails(item)">
-					<text class="ct-lab-item__text">   
-						考试{{item}}
-					</text>
-				</view>
-			</van-cell>
-		</van-cell-group>
-		<view :hidden="finished" @tap="init" class="load-more-btn">加载更多</view>
-		<view :hidden="!finished" class="load-more-btn">没有更多了</view>
-		<!-- #endif -->
 	</view>
 </template>
 
@@ -52,9 +33,6 @@
 			uni.setNavigationBarTitle({
 				title: '考试列表'
 			})
-			// #ifdef MP-WEIXIN
-			this.init()
-			// #endif
 		},
     methods: {
 		/**

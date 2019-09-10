@@ -29,7 +29,6 @@
 				autosize
 				readonly
 			/>
-			<!-- #ifdef H5 -->
 			<van-field
 				v-model="reason"
 				label="审批原因"
@@ -39,19 +38,6 @@
 				autosize
 				:readonly="role!=='teacher'"
 			/>
-			<!-- #endif -->
-			
-			<!-- #ifdef MP-WEIXIN -->
-			<van-field
-				:value="reason"
-				label="审批原因"
-				type="textarea"
-				placeholder="审批原因"
-				rows="4"
-				autosize
-				@change="handleChange('reason', $event)" 
-			/>
-			<!-- #endif -->
 		</van-cell-group>
 		<view class="bottom-btn-container" v-if="role==='teacher'">
 			<view class="mt-small">

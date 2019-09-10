@@ -10,7 +10,6 @@
 		    @click="showTimePicker = true"
 		  />
 			
-			<!-- #ifdef H5 -->
 			<van-field
 				v-model="labInfo.message"
 				label="预约原因"
@@ -19,19 +18,7 @@
 				rows="4"
 				autosize
 			/>
-			<!-- #endif -->
 			
-			<!-- #ifdef MP-WEIXIN -->
-			<van-field
-				:value="labInfo.message"
-				label="预约原因"
-				type="textarea"
-				placeholder="请输入预约原因"
-				rows="4"
-				autosize
-				@change="handleChange('message', $event)" 
-			/>
-			<!-- #endif -->
 		</van-cell-group>
 		
 		<view class="text-center" style="margin-top: 20rpx;">
@@ -53,18 +40,6 @@
 					@confirm="confirmTime"
 			  />
 			</van-popup>
-		<!-- #endif -->
-		<!-- #ifdef MP-WEIXIN -->
-		<van-popup :show="showTimePicker" position="bottom">
-		  <van-datetime-picker
-		    :value="pickerTime.getTime()"
-		    type="datetime"
-		    :min-date="minDate.getTime()"
-		    :max-date="maxDate.getTime()"
-				@cancel="showTimePicker=false"
-				@confirm="confirmTime"
-		  />
-		</van-popup>
 		<!-- #endif -->
 	</view>
 </template>
@@ -113,12 +88,6 @@
 				}
 				// #endif
 				
-				// #ifdef MP-WEIXIN
-				console.log(value);
-				this.pickerTime = $vm.$dayjs(value.detail).toDate()
-				this.labInfo.time = $vm.$dayjs(value.detail).format('YYYY-MM-DD HH:mm:ss')
-				// #endif
-				
 				this.showTimePicker = false
 			},
 			/**
@@ -133,16 +102,7 @@
 				console.log('要提交的数据是 ->', data)
 				setTimeout(() => {
 					this.isBtnLoading = false
-					// #ifdef H5
 					this.$toast('提交成功')
-					// #endif
-					
-					// #ifdef MP-WEIXIN
-					uni.showToast({
-						title: '提交成功'
-					})
-					// #endif
-					
 				}, 2000)
 			},
 			/**
