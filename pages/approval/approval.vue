@@ -1,5 +1,11 @@
 <template>
 	<view class="ct-page">
+		<van-nav-bar
+			class="ct-navbar"
+			:title="title"
+			left-arrow
+			@click-left="backMain"
+		/>
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
@@ -45,16 +51,11 @@
 			return {
 				list: [],
 				loading: false,
-				finished: false
+				finished: false,
+				title: '业务审批列表'
 			}
 		},
 		onLoad() {
-			uni.setNavigationBarTitle({
-				title: '业务审批列表'
-			})
-			// #ifdef MP-WEIXIN
-			this.init()
-			// #endif
 		},
 		onReachBottom() {
 			this.init()
@@ -128,6 +129,17 @@
 			console.log('传入的审批事项的信息是', item)
 			uni.navigateTo({
 				url: `./approval-details?item=${item}`,
+				success: res => {},
+				fail: () => {},
+				complete: () => {}
+			});
+		},
+		/**
+		 * 回到主页
+		 */
+		backMain() {
+			uni.navigateTo({
+				url: '../main/main',
 				success: res => {},
 				fail: () => {},
 				complete: () => {}

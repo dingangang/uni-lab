@@ -12,7 +12,11 @@
 		{
 			"path": "pages/lab/lab",
 			"style": {
-				"onReachBottomDistance": 100
+				"onReachBottomDistance": 100,
+				"navigationStyle":"custom",
+				"h5":{
+					"titleView": false
+				}
 			}
 		},
 		{
@@ -31,6 +35,10 @@
 		{
 			"path" : "pages/approval/approval",
 			"style" : {
+				"navigationStyle":"custom",
+				"h5":{
+					"titleView": false
+				}
 			}
 		},
 		{
@@ -41,6 +49,10 @@
 		{
 			"path" : "pages/consumables/consumables",
 			"style" : {
+				"navigationStyle":"custom",
+				"h5":{
+					"titleView": false
+				}
 			}
 		},
 		{
@@ -49,9 +61,57 @@
 			}
 		},
 		{
-			"path" : "pages/exam/exam",
-			"style" : {
-			}
+				"path" : "pages/main/main",
+				"style": {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
+		}
+		,{
+				"path" : "pages/search/search",
+				"style": {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
+		}
+		,{
+				"path" : "pages/setting/setting",
+				"style" : {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
+		}
+		,{
+				"path" : "pages/notice/notice",
+				"style" : {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
+		},{
+				"path" : "pages/notice/notice-details",
+				"style" : {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
+		}
+		,{
+				"path" : "pages/safety/safety",
+				"style" : {
+					"navigationStyle":"custom",
+					"h5":{
+						"titleView": false
+					}
+				}
 		}
     ],
 	"tabBar": {
@@ -75,16 +135,16 @@
 	        "selectedIconPath": "static/images/consumables-selected.png",
 	        "text": "耗材管理"
 	    }, {
-	        "pagePath": "pages/exam/exam",
+	        "pagePath": "pages/safety/safety",
 	        "iconPath": "static/images/exam.png",
 	        "selectedIconPath": "static/images/exam-selected.png",
-	        "text": "考试练习"
+	        "text": "安全巡查"
 	    }]
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "师大物理实验室",
-		"navigationBarBackgroundColor": "#2bc3ff",
+		"navigationBarBackgroundColor": "#3d3a4f",
 		"backgroundColor": "#F8F8F8"
 	}
 }

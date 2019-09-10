@@ -123,14 +123,12 @@
                 </view>
               </template>
               <view slot="label">
-								<!-- #ifdef H5 -->
                 <van-uploader
                   :file-list="trouble.fileList"
                   :after-read="afterRead"
                   :before-delete="handleDelImg"
                   :max-count="9"
                 />
-								<!-- #endif -->
               </view>
             </van-cell>
           </view>
@@ -161,15 +159,7 @@
 </template>
 
 <script>
-	// #ifdef MP-WEIXIN
-	import ctUploader from '@/components/ct-uploader.vue'
-	// #endif
 export default {
-	// #ifdef MP-WEIXIN
-	components: {
-		ctUploader
-	},
-	// #endif
   data() {
     return {
       activeBtn: '2',

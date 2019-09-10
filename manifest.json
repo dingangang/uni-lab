@@ -75,6 +75,9 @@
             "mode" : "hash"
         },
         "title" : "师大物理实验室",
-        "domain" : "https://www.szqiye.club"
+        "domain" : "https://www.szqiye.club",
+        "devServer" : {
+            "port" : 9528
+        }
     }
 }

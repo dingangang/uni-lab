@@ -1,6 +1,11 @@
 <template>
 	<view class="ct-page">
-		<!-- #ifdef H5 -->
+		<van-nav-bar
+			class="ct-navbar"
+			:title="title"
+			left-arrow
+			@click-left="backMain"
+		/>
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
@@ -26,7 +31,6 @@
 				</view>
 		    </van-cell>
 		</van-list>
-		<!-- #endif -->
 		
 	</view>
 </template>
@@ -37,13 +41,11 @@
 			return {
 				list: [],
 				loading: false,
-				finished: false
+				finished: false,
+				title: '实验室列表'
 			}
 		},
 		onLoad() {
-			uni.setNavigationBarTitle({
-				title: '实验室列表'
-			})
 		},
 		onReachBottom() {
 			this.init()
@@ -117,6 +119,17 @@
 				console.log('传入的实验室的信息是', lab)
 				uni.navigateTo({
 					url: `./lab-details?labid=${lab.id}`,
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			/**
+			 * 回到主页
+			 */
+			backMain() {
+				uni.navigateTo({
+					url: '../main/main',
 					success: res => {},
 					fail: () => {},
 					complete: () => {}

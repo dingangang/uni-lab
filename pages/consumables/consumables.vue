@@ -1,5 +1,11 @@
 <template>
 	<view class="ct-page">
+		<van-nav-bar
+			class="ct-navbar"
+			:title="title"
+			left-arrow
+			@click-left="backMain"
+		/>
 		<van-list
 		  v-model="loading"
 		  :finished="finished"
@@ -38,16 +44,11 @@
 			return {
 				list: [],
 				loading: false,
-				finished: false
+				finished: false,
+				title: '耗材管理列表'
 			}
 		},
 		onLoad() {
-			uni.setNavigationBarTitle({
-				title: '耗材管理列表'
-			})
-			// #ifdef MP-WEIXIN
-			this.init()
-			// #endif
 		},
 		computed: {
 			role: function() {
@@ -126,6 +127,17 @@
 			console.log('传入的耗材的信息是', item)
 			uni.navigateTo({
 				url: `./consumables-details?item=${item.name}&type=${item.type}`,
+				success: res => {},
+				fail: () => {},
+				complete: () => {}
+			});
+		},
+		/**
+		 * 回到主页
+		 */
+		backMain() {
+			uni.navigateTo({
+				url: '../main/main',
 				success: res => {},
 				fail: () => {},
 				complete: () => {}

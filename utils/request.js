@@ -1,11 +1,4 @@
-
-// #ifdef MP-WEIXIN
-import axios from '@/js_sdk/gangdiedao-uni-axios'
-// #endif
-
-// #ifdef H5
 import axios from 'axios'
-// #endif
 
 
 // create an axios instance

@@ -26,13 +26,15 @@
 			return {
 				list: [],
 				loading: false,
-				finished: false
+				finished: false,
+				title: '考试列表'
 			}
 		},
 		onLoad() {
-			uni.setNavigationBarTitle({
-				title: '考试列表'
-			})
+			// exam组件因为没注册页面所以钩子里没有onLoad方法，相关操作放到mounted中去执行
+		},
+		mounted() {
+			console.log('mounted from exam');
 		},
     methods: {
 		/**
@@ -81,9 +83,8 @@
 				title: `前往${item.name}考试页`,
 				icon: 'none'
 			})
-		}
-		
-    }
+		},
+	}
 	}
 </script>
 
