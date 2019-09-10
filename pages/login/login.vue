@@ -86,8 +86,12 @@ export default {
 		console.log('登陆成功,跳转到实验室界面');
 		uni.navigateTo({
 			url: '../main/main',
-			success: res => {},
-			fail: () => {},
+			success: res => {
+				$vm.isLoading = false
+			},
+			fail: () => {
+				$vm.isLoading = false
+			},
 			complete: () => {}
 		})
 	  }, 2000)

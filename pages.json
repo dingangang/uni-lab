@@ -113,6 +113,10 @@
 					}
 				}
 		}
+        ,{
+            "path" : "pages/check/check",
+            "style" : {}
+        }
     ],
 	"tabBar": {
 	    "color": "#7A7E83",

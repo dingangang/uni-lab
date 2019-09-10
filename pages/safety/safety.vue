@@ -8,17 +8,21 @@
 		/>
 		<van-tabs v-model="active">
 		  <van-tab title="考试"></van-tab>
-		  <van-tab title="巡查">内容 2</van-tab>
+		  <van-tab title="巡查"></van-tab>
 		</van-tabs>
 		<exam v-if="active===0"></exam>
+		<check v-if="active===1"></check>
 	</view>
 </template>
 
 <script>
 	import Exam from '../exam/exam.vue'
+	import Check from '../check/check.vue'
+	
 	export default {
 		components: {
-			Exam
+			Exam,
+			Check
 		},
 		data() {
 			return {
