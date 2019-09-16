@@ -65,7 +65,7 @@
 				type: '',
 				form: {
 					billId: 'HS201810261230301001',
-					name: '有机肥料',
+					name: '有机废液',
 					unit: '01-机械学院',
 					number: '300ml',
 				},

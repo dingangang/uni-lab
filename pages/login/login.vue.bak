@@ -1,7 +1,7 @@
 <template>
   <view class="login-page">
     <h2 class="text-center" style="position: absolute; top: 10vh; width: 100%;">
-			湖南师范大学实验室<br/>综合管理平台
+			湖南师范大学实验室综合管理平台
 		</h2>
     <view class="login-form__container">
       <van-cell-group class="login-form">
