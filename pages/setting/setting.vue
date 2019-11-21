@@ -9,7 +9,7 @@
 		<van-cell-group>
 		  <van-cell title="用户名" value="zhangchengxi" />
 		  <van-cell title="姓名" value="张晨曦" />
-		  <van-cell title="版本信息" value="v1.0.4 beat" />
+		  <van-cell title="版本信息" value="v1.0.4 beta" />
 		</van-cell-group>
 		
 		<view style="margin-top: 20px; padding: 0 20px;"> 

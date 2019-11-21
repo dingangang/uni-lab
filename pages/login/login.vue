@@ -44,6 +44,7 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 export default {
   name: 'Login',
   data() {
@@ -55,6 +56,18 @@ export default {
       isLoading: false
     }
   },
+	created() {
+		if (this.token) {
+			console.log('存在token');
+		} else {
+			console.log('不存在token，跳转到统一认证页面');
+		}
+	},
+	computed: {
+		...mapGetters([
+			'token'
+		]),
+	},
   methods: {
     /**
      * 登录方法
@@ -64,23 +77,6 @@ export default {
 	  // 这里路由跳转由uniapp代理 实验室界面是属于tabbar接管的页面。所以只能用触发tabbar来控制
 	  const $vm = this
 	  $vm.isLoading = true
-		// 模拟选择角色
-		switch (this.loginForm.username) {
-			case 'teacher':
-				$vm.$store.commit('SET_ROLE', 'teacher')
-				break
-			case 'student':
-				$vm.$store.commit('SET_ROLE', 'student')
-				break
-			default:
-				uni.showToast({
-				    title: '用户或密码错误',
-				    duration: 2000,
-						icon: 'none'
-				});
-				$vm.isLoading = false
-				return
-		}
 		
 	  setTimeout(function() {
 		console.log('登陆成功,跳转到实验室界面');

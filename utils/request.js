@@ -40,18 +40,19 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.serverResult.resultCode !== 200 && res.serverResult.resultCode !== '200') {
-      // Message({
-      //   message: res.message || 'Error',
-      //   type: 'error',
-      //   duration: 10 * 1000
-      // })
+		return res
+    // // if the custom code is not 20000, it is judged as an error.
+    // if (res.serverResult.resultCode !== 200 && res.serverResult.resultCode !== '200') {
+    //   // Message({
+    //   //   message: res.message || 'Error',
+    //   //   type: 'error',
+    //   //   duration: 10 * 1000
+    //   // })
 
-      return Promise.reject(new Error(res.serverResult.resultMessage || 'Error'))
-    } else {
-      return res
-    }
+    //   return Promise.reject(new Error(res.serverResult.resultMessage || 'Error'))
+    // } else {
+    //   return res
+    // }
   },
   error => {
     console.log('err' + error) // for debug
