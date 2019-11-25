@@ -16,7 +16,7 @@
 					</view>
 					<view class="ct-top-enter__title">待办</view>
 				</view> -->
-				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/lab/lab')">
+				<view class="ct-top-enter__item" @tap="goLabSSO">
 					<view class="ct-top-enter__img ct-top-enter__img--bg2">
 						<img src="../../common/icons/lab.png" alt="">
 					</view>
@@ -127,6 +127,7 @@
 
 <script>
 	import { mapGetters } from 'vuex'
+	import { Base64 } from 'js-base64'
 	export default {
 		data() {
 			return {
@@ -256,6 +257,24 @@
 				}
 			},
 			/**
+			 * 去实验室SSO页面，
+			 */
+			goLabSSO() {
+				if (!this.userDetails) {
+					this.$toast('用户信息错误')
+					return
+				} else if (this.userDetails.USER_TYPE === '2') {
+					this.$toast('学生无权限')
+					return
+				}
+				const infoJsonStr = Base64.encodeURI(JSON.stringify(this.userDetails))
+				uni.navigateTo({
+					url: `../lab/lab-sso?key=${infoJsonStr}`,
+					success: res => {},
+					fail: () => {},
+					complete: () => {}
+				});
+			},/**
 			 * 去设置页
 			 */
 			goSetting() {
@@ -306,7 +325,7 @@
 					console.log('userInfo', userInfo)
 					const userDetails = await this.$store.dispatch('user/getAuthUserDetails')
 					console.log('userDetails', userDetails)
-					// 子系统跳转放到卡片点击事件中。
+					// 完成本地化信息储存。
 				} else if (this.$route.query.hasOwnProperty('token')) {
 					// 存在token,单点登录的情况.
 					this.$message({

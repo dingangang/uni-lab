@@ -108,7 +108,11 @@
 			"path": "pages/check/check",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/lab/lab-sso",
+            "style" : {}
+        }
+    ],
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#2bc3ff",

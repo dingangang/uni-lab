@@ -36,6 +36,7 @@
 </template>
 
 <script>
+	import { getLabList } from '../../api/lab.js'
 	export default {
 		data() {
 			return {
@@ -46,6 +47,7 @@
 			}
 		},
 		onLoad() {
+			this.getLabList()
 		},
 		onReachBottom() {
 			this.init()
@@ -134,6 +136,15 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			/**
+			 * 获取实验室列表
+			 */
+			getLabList() {
+				const data = {}
+				getLabList(data).then(res => {
+					console.log('实验室列表返回信息', res);
+				})
 			}
 			
 		}
