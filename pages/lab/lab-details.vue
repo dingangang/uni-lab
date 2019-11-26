@@ -6,16 +6,16 @@
           <p class="ct-item-block">
             <span class="ct-item-block__title">所属单位：</span>
             <span class="ct-item-block__content">
-              <span>湖南师范大学化学化工学院</span>
+              <span>{{labInfo.college_name}}</span>
             </span>
           </p>
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验室类型：</span>
             <span class="ct-item-block__content">
-              <span>国家实验室示范中心</span>
+              <span>{{labInfo.labtype}}</span>
             </span>
           </p>
-          <p class="ct-item-block">
+          <!-- <p class="ct-item-block">
             <span class="ct-item-block__title">实验室位置：</span>
             <span class="ct-item-block__content">
               <span>二里半校区</span>
@@ -26,25 +26,25 @@
             <span class="ct-item-block__content">
               <span>方亮</span>
             </span>
-          </p>
+          </p> -->
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验室安全分类：</span>
             <span class="ct-item-block__content">
-              <span>机电类实验室</span>
+              <span>{{labInfo.labsafetype}}</span>
             </span>
           </p>
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验室风险等级：</span>
             <span class="ct-item-block__content">
-              <span>三级</span>
+              <span>{{labInfo.labsafelevel}}</span>
             </span>
           </p>
-          <p class="ct-item-block">
+          <!-- <p class="ct-item-block">
             <span class="ct-item-block__title">风险源：</span>
             <span class="ct-item-block__content">
               <span>高温及大功率设备</span>
             </span>
-          </p>
+          </p> -->
         </div>
       </van-collapse-item>
       <van-collapse-item title="实验室人员信息" name="2">
@@ -217,16 +217,21 @@
 </template>
 
 <script>
+	import { getLabInfoByID } from '../../api/lab.js'
 export default {
   data() {
     return {
-      activeNames: '1'
+      activeNames: '1',
+			labInfo: {}
     }
   },
-	onLoad(e) {
+	async onLoad(e) {
 		console.log(e);
+		const labInfo = await this.getLabInfoByID(e.id)
+		console.log('labInfo', labInfo);
+		this.labInfo = labInfo
 		uni.setNavigationBarTitle({
-			title: '化学生物学及中药分析教育部重点实验室'
+			title: labInfo.college_name
 		})
 	},
   methods: {
@@ -248,6 +253,25 @@ export default {
 		collapseChange(event) {
 			console.log(event);
 			this.activeNames = event.detail
+		},
+		/**
+		 * 获取实验室信息
+		 */
+		getLabInfoByID(id) {
+			const $vm = this
+			return new Promise(resolve => {
+				const params = {
+					id
+				}
+				getLabInfoByID(params).then(res => {
+					console.log('实验室信息', res);
+					if (res.serverResult.resultCode === 200) {
+						resolve(res.rows[0])
+					}
+				}).catch(e => {
+					resolve(e)
+				})
+			})
 		}
   }
 }

@@ -13,12 +13,12 @@
 		  @load="init"
 		>
 		    <van-cell
-				v-for="(item, index) in list"
-				:key="index"
+				v-for="item in list"
+				:key="item.id"
 		    >
 				<view class="ct-lab-item" @tap="goLabDetails(item)">
 					<text class="ct-lab-item__text">   
-						{{item.name}}
+						{{item.college_name}}
 					</text>
 					<van-button
 						type="primary"
@@ -107,7 +107,7 @@
 			goBookLab(lab) {
 				console.log('传入的实验室的信息是', lab)
 				uni.navigateTo({
-					url: `./lab-book?labid=${lab.id}`,
+					url: `./lab-book?id=${lab.id}`,
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
@@ -120,7 +120,7 @@
 			goLabDetails(lab) {
 				console.log('传入的实验室的信息是', lab)
 				uni.navigateTo({
-					url: `./lab-details?labid=${lab.id}`,
+					url: `./lab-details?id=${lab.id}`,
 					success: res => {},
 					fail: () => {},
 					complete: () => {}
@@ -144,6 +144,9 @@
 				const data = {}
 				getLabList(data).then(res => {
 					console.log('实验室列表返回信息', res);
+					if (res.serverResult.resultCode === 200) {
+						this.list = res.rows
+					}
 				})
 			}
 			

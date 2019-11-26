@@ -45,6 +45,7 @@
 </template>
 
 <script>
+	import { getLabInfoByID } from '../../api/lab.js'
 	export default {
 		data() {
 			const $vm = this
@@ -64,12 +65,21 @@
 		/**
 		 * @param {Object} e 跳转页面时的参数
 		 */
-		onLoad(e) {
+		async onLoad(e) {
+			const $vm = this
 			console.log(e)
 			// 获取实验室名称后为标题赋值
+			
+			const labInfo = await this.getLabInfoByID(e.id)
+			
 			uni.setNavigationBarTitle({
-			    title: `纳米氧化物光实验室`
+			    title: labInfo.college_name
 			});
+			this.labInfo = {
+				title: labInfo.college_name,
+				time: '(明天) ' + $vm.$dayjs(new Date).add(1,'day').hour(8).format('YYYY-MM-DD HH:mm:ss'),
+				message: ''
+			}
 		},
 		methods: {
 			/**
@@ -116,6 +126,25 @@
 			 */
 			handleChange(msg, event) {
 				this.labInfo.message = event.detail
+			},
+			/**
+			 * 获取实验室信息
+			 */
+			getLabInfoByID(id) {
+				const $vm = this
+				return new Promise(resolve => {
+					const params = {
+						id
+					}
+					getLabInfoByID(params).then(res => {
+						console.log('实验室信息', res);
+						if (res.serverResult.resultCode === 200) {
+							resolve(res.rows[0])
+						}
+					}).catch(e => {
+						resolve(e)
+					})
+				})
 			}
 		},
 	}

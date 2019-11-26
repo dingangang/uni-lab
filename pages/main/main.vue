@@ -128,6 +128,7 @@
 <script>
 	import { mapGetters } from 'vuex'
 	import { Base64 } from 'js-base64'
+	import { checkTokenActive } from '../../api/auth.js'
 	export default {
 		data() {
 			return {
@@ -179,8 +180,7 @@
 			}
 		},
 		created() {
-			console.log('hello from main');
-			
+		
 			// 系统后台跳转参数中会忽略掉vue路由的#符号，导致参数错误。
 			// 暂时先处理一下，如果不行，则需要启用history路由模式处理
 			const result = window.location.href.match(/code=(.*?)#/)
@@ -193,12 +193,13 @@
 				this.checkAuth()
 			}
 			
-			if (this.token) {
-				console.log('存在token');
-			} else {
-				console.log('不存在token，跳转到统一认证页面');
-				this.checkAuth()
-			}
+			
+			// if (this.token) {
+			// 	console.log('存在token');
+			// } else {
+			// 	console.log('不存在token，跳转到统一认证页面');
+			// 	this.checkAuth()
+			// }
 		},
 		computed: {
 			...mapGetters([
@@ -309,6 +310,26 @@
 				});
 			},
 			/**
+			 * 手机端，进入到首页时，先验证一次token有效性
+			 */
+			checkTokenActive() {
+				console.log(this.token);
+				return new Promise(resolve => {
+					if (this.token) {
+						checkTokenActive(this.token).then(res => {
+							console.log(res);
+							if (res.active) {
+								resolve(true)
+							} else {
+								resolve(false)
+							}
+						})
+					} else {
+						resolve(false)
+					}
+				})
+			},
+			/**
 			 * checkAuth 统一认证方法
 			 *    因为本系统中permission.js中加入了路由钩子做了权限设置，此时先将gateway放入路由白名单中，可以直接访问。
 			 * 1、检查路径参数，存在code视为统一认证后的跳转。换取token再获取用户信息并储存。
@@ -316,6 +337,20 @@
 			 * 3、code和token均不存在，视为直接登录，应当直接跳转到统一认证页。
 			 */
 			async checkAuth() {
+				// 手机端的再每次回退到首页时都要做一次验证
+				const isTokenActive = await this.checkTokenActive()
+				
+				console.log('isTokenActive', isTokenActive);
+				
+				if (isTokenActive) {
+					const userInfo = await this.$store.dispatch('user/getAuthUserInfo')
+					console.log('userInfo', userInfo)
+					const userDetails = await this.$store.dispatch('user/getAuthUserDetails')
+					console.log('userDetails', userDetails)
+					return
+				}
+				
+				
 				if (this.$route.query.hasOwnProperty('code')) {
 					// 存在code,统一认证的情况
 					const code = this.$route.query.code
