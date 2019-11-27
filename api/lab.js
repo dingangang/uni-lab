@@ -26,3 +26,12 @@ export function getLabInfoByID(params) {
 		params
   })
 }
+
+// 查询实验室人员信息
+export function getLabStaff(data) {
+  return request({
+    url: '/uc/user/query',
+    method: 'post',
+		data
+  })
+}

@@ -35,6 +35,9 @@
 		},
 		onLoad:function(option){
 			const vm = this
+			// 检查是否已经登录并选择了角色
+			vm.checkLabLoginStatus()
+			
 			const keyParams = option.key
 			if (keyParams) {
 				const decodeStr = Base64.decode(keyParams)
@@ -125,6 +128,19 @@
 				uni.switchTab({
 					url: './lab'
 				})
+			},
+			/**
+			 * 检查是否已经登录，如果已经登录，直接跳转到实验室
+			 */
+			checkLabLoginStatus() {
+				const user_id = Cookies.get('user_id')
+				const user_role = Cookies.get('user_role')
+				
+				if (user_id && user_role) {
+					uni.switchTab({
+						url: './lab'
+					})
+				}
 			}
 	},
 }

@@ -217,7 +217,8 @@
 </template>
 
 <script>
-	import { getLabInfoByID } from '../../api/lab.js'
+	import { getLabInfoByID,
+	 getLabStaff } from '../../api/lab.js'
 export default {
   data() {
     return {
@@ -230,6 +231,7 @@ export default {
 		const labInfo = await this.getLabInfoByID(e.id)
 		console.log('labInfo', labInfo);
 		this.labInfo = labInfo
+		const labStaff = await this.getLabStaff(labInfo.college_code)
 		uni.setNavigationBarTitle({
 			title: labInfo.college_name
 		})
@@ -270,6 +272,24 @@ export default {
 					}
 				}).catch(e => {
 					resolve(e)
+				})
+			})
+		},
+		/**
+		 * 获取实验室人员信息
+		 */
+		getLabStaff(belong_unit) {
+			const $vm = this
+			return new Promise(resolve => {
+				const data = {
+					status: 1,
+					belong_unit,
+					page: 1,
+					rows: 10,
+				}
+				getLabStaff(data).then(res => {
+					console.log('实验室人员信息', res);
+					resolve(res)
 				})
 			})
 		}
