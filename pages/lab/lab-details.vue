@@ -281,13 +281,13 @@ export default {
 		getLabStaff(belong_unit) {
 			const $vm = this
 			return new Promise(resolve => {
-				const data = {
+				const params = {
 					status: 1,
 					belong_unit,
 					page: 1,
 					rows: 10,
 				}
-				getLabStaff(data).then(res => {
+				getLabStaff(params).then(res => {
 					console.log('实验室人员信息', res);
 					resolve(res)
 				})
