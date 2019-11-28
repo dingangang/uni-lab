@@ -20,14 +20,15 @@
 					<text class="ct-lab-item__text">   
 						{{item.college_name}}
 					</text>
-					<van-button
+					<text> </text>
+					<!-- <van-button
 						type="primary"
 						size="small"
 						class="ct-lab-item__button"
 						@tap.stop="goBookLab(item)"
 					>
 						预约
-					</van-button>
+					</van-button> -->
 				</view>
 		    </van-cell>
 		</van-list>

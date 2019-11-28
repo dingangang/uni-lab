@@ -185,7 +185,7 @@ export default {
 	onLoad() {
 		// 动态设置页面标题
 		uni.setNavigationBarTitle({
-			title: '纳米氧化物光电实验室'
+			title: '巡查明细'
 		})
 	},
   methods: {

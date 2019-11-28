@@ -186,20 +186,12 @@
 			const result = window.location.href.match(/code=(.*?)#/)
 			if (result && result.length > 1 && result[1]) {
 				// 暂时还未确定路径
-				// window.location.href = 'http://syszhxxpt.hunnu.edu.cn/#/gateway?code=' + result[1]
+				window.location.href = 'http://syszhxxpt.hunnu.edu.cn/lab-mobile/#/?code=' + result[1]
 				console.log('捕获， result', result)
 			} else {
 				// 统一认证
 				this.checkAuth()
 			}
-			
-			
-			// if (this.token) {
-			// 	console.log('存在token');
-			// } else {
-			// 	console.log('不存在token，跳转到统一认证页面');
-			// 	this.checkAuth()
-			// }
 		},
 		computed: {
 			...mapGetters([
@@ -246,16 +238,20 @@
 			 * 切换到内部视图
 			 */
 			swithTabbar(url) {
-				if (url !== '') {
-					uni.switchTab({
-						url: url
-					})
-				} else {
-					uni.showToast({
-						title: '暂无页面',
-						icon: 'none'
-					})
-				}
+				uni.showToast({
+					title: '暂未开放',
+					icon: 'none'
+				})
+				// if (url !== '') {
+				// 	uni.switchTab({
+				// 		url: url
+				// 	})
+				// } else {
+				// 	uni.showToast({
+				// 		title: '暂无页面',
+				// 		icon: 'none'
+				// 	})
+				// }
 			},
 			/**
 			 * 去实验室SSO页面，
@@ -372,7 +368,7 @@
 					this.$message.info('您已经退出')
 				} else {
 					// 两者都不存在，直接登录的情况，跳转统一认证页
-					window.location.href = 'http://aip.app.hunnu.edu.cn/oauth2/authorize?client_id=sB9TQUNNQ0iab6DKWGznUzw&response_type=code&redirect_uri=http://syszhxxpt.hunnu.edu.cn/#/gateway'
+					window.location.href = 'http://aip.app.hunnu.edu.cn/oauth2/authorize?client_id=sB9TQUNNQ0iab6DKWGznUzw&response_type=code&redirect_uri=http://syszhxxpt.hunnu.edu.cn/lab-mobile/#/'
 				}
 			},
 		}

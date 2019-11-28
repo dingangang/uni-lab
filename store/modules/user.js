@@ -6,7 +6,8 @@ import { getToken,
   setTokenInfo,
   getTokenInfo,
   setCode,
-  removeCode
+  removeCode,
+	removeTokenInfo
 } from '../../utils/auth'
 import { getAuthToken,
   refreshToken,
@@ -155,12 +156,17 @@ const actions = {
         commit('SET_TOKEN', '')
         commit('SET_USERINFO', null)
         commit('SET_USERDETAILS', null)
-        const logoutResult = await logoutFromAuth()
-        console.log('logoutResult', logoutResult)
         removeToken()
         removeCode()
-        resetRouter()
-        resolve()
+				removeTokenInfo()
+        // resetRouter()
+        try {
+					const logoutResult = await logoutFromAuth()
+					console.log('logoutResult', logoutResult)
+					resolve()
+				} catch (e) {
+					reject(e)
+				}
       }, 1000)
     })
   },

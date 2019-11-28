@@ -52,60 +52,25 @@
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验室责任人：</span>
             <span class="ct-item-block__content">
-              <span>方亮</span>
+              <span>{{labInfo.college_leader_name}}</span>
             </span>
           </p>
-          <p class="ct-item-block">
+          <!-- <p class="ct-item-block">
             <span class="ct-item-block__title">安全管理员：</span>
             <span class="ct-item-block__content">
               <span>翁雨燕</span>
             </span>
-          </p>
+          </p> -->
           <p class="ct-item-block">
             <span class="ct-item-block__title">实验人员：</span>
             <span class="ct-item-block__content">
-              <span>王顺</span>
-              <span>通过安全培训考试</span>
-            </span>
-          </p>
-          <p class="ct-item-block">
-            <span class="ct-item-block__title">实验人员：</span>
-            <span class="ct-item-block__content">
-              <span>涂宝星</span>
-              <span>通过安全培训考试</span>
-            </span>
-          </p>
-					<p class="ct-item-block">
-            <span class="ct-item-block__title">实验人员：</span>
-            <span class="ct-item-block__content">
-              <span>胡一奇</span>
-              <span>通过安全培训考试</span>
-            </span>
-          </p>
-					<p class="ct-item-block">
-            <span class="ct-item-block__title">实验人员：</span>
-            <span class="ct-item-block__content">
-              <span>王纬</span>
-              <span>通过安全培训考试</span>
-            </span>
-          </p>
-					<p class="ct-item-block">
-            <span class="ct-item-block__title">实验人员：</span>
-            <span class="ct-item-block__content">
-              <span>周海林</span>
-              <span>通过安全培训考试</span>
-            </span>
-          </p>
-					<p class="ct-item-block">
-            <span class="ct-item-block__title">实验人员：</span>
-            <span class="ct-item-block__content">
-              <span>惠强</span>
-              <span>通过安全培训考试</span>
+              <span>暂无</span>
+              <!-- <span>通过安全培训考试</span> -->
             </span>
           </p>
         </div>
       </van-collapse-item>
-      <van-collapse-item title="实验室物资安全信息" name="3">
+      <!-- <van-collapse-item title="实验室物资安全信息" name="3">
         <div class="ct-block-details">
           <h4 class="text-red mb-tiny">管制化学品</h4>
 					<table class="ct-table van-hairline--bottom">
@@ -202,7 +167,7 @@
               <span>学校巡查≥1次/月   已完成0次           <a class="text-link pull-right">查看</a></span>
             </span>
         </p>
-      </van-collapse-item>
+      </van-collapse-item> -->
     </van-collapse>
 
     <div class="big-btn__container">

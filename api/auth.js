@@ -52,7 +52,7 @@ export function loginToSSO(key) {
 // 统一认证退出
 export function logoutFromAuth() {
   return request({
-    url: `http://aip.app.hunnu.edu.cn/oauth2/logout?client_id=sB9TQUNNQ0iab6DKWGznUzw&response_type=code&redirect_uri=http://syszhxxpt.hunnu.edu.cn/#/gateway?origin`,
+    url: `http://aip.app.hunnu.edu.cn/oauth2/logout?client_id=sB9TQUNNQ0iab6DKWGznUzw&response_type=code&redirect_uri=http://syszhxxpt.hunnu.edu.cn/lab-mobile/#/`,
     method: 'get'
   })
 }

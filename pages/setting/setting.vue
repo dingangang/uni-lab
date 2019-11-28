@@ -7,8 +7,8 @@
 			@click-left="backMain"
 		/>
 		<van-cell-group>
-		  <van-cell title="用户名" value="zhangchengxi" />
-		  <van-cell title="姓名" value="张晨曦" />
+		  <van-cell title="用户名" :value="userInfo?userInfo.account:''" />
+		  <van-cell title="姓名" :value="userInfo?userInfo.realname:''" />
 		  <van-cell title="版本信息" value="v1.0.4 beta" />
 		</van-cell-group>
 		
@@ -19,11 +19,19 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	export default {
 		data() {
 			return {
 				
 			}
+		},
+		computed: {
+			...mapGetters([
+				'token',
+				'userInfo',
+				'userDetails'
+			]),
 		},
 		methods: {
 			/**
@@ -44,10 +52,16 @@
 				this.$dialog.confirm({
 				  title: '退出确认',
 				  message: '您将退出系统'
-				}).then(() => {
+				}).then(async() => {
 				  // on confirm
-					uni.navigateTo({
-						url: '../login/login',
+					try{
+						await this.$store.dispatch('user/logoutFromGateway')
+					}catch(e){
+						//TODO handle the exception
+						console.log(e);
+					}
+					uni.reLaunch({
+						url: '../main/main',
 						success: res => {},
 						fail: () => {},
 						complete: () => {}

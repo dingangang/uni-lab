@@ -72,12 +72,18 @@
     },
     "h5" : {
         "router" : {
-            "mode" : "hash"
+            "mode" : "hash",
+            "base" : "/lab-mobile/"
         },
         "title" : "师大物理实验室",
-        "domain" : "https://www.szqiye.club",
+        "domain" : "http://syszhxxpt.hunnu.edu.cn/lab-mobile",
         "devServer" : {
             "port" : 9528
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
         }
     }
 }
