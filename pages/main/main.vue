@@ -264,7 +264,11 @@
 					this.$toast('学生无权限')
 					return
 				}
-				const infoJsonStr = Base64.encodeURI(JSON.stringify(this.userDetails))
+				const data = {
+					...this.userDetails,
+					type: 'apps'
+				}
+				const infoJsonStr = Base64.encodeURI(JSON.stringify(data))
 				uni.navigateTo({
 					url: `../lab/lab-sso?key=${infoJsonStr}`,
 					success: res => {},
