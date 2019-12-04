@@ -22,17 +22,17 @@
 					</view>
 					<view class="ct-top-enter__title">实验室</view>
 				</view>
-				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/approval/approval')">
+				<view class="ct-top-enter__item" @tap="goExam">
 					<view class="ct-top-enter__img ct-top-enter__img--bg1">
 						<img src="../../common/icons/test.png" alt="">
 					</view>
 					<view class="ct-top-enter__title">考试</view>
 				</view>
-				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/safety/safety')">
+				<view class="ct-top-enter__item" @tap="goCheck">
 					<view class="ct-top-enter__img ct-top-enter__img--bg3">
 						<img src="../../common/icons/safe.png" alt="">
 					</view>
-					<view class="ct-top-enter__title">安全</view>
+					<view class="ct-top-enter__title">巡查</view>
 				</view>
 				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/consumables/consumables')">
 					<view class="ct-top-enter__img ct-top-enter__img--bg4">
@@ -75,28 +75,28 @@
 			<view class="ct-block__title">
 				<text>实验室系统</text>
 			</view>
-			<text class="ct-block-desc">实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。</text>
+			<text class="ct-block-desc">提供了统一性全局性的实验室信息管理系统，涵盖了实验室基础信息管理，人员信息管理，安全检查管理等等模块，方便学校实验室管理</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>考试系统</text>
 			</view>
-			<text class="ct-block-desc">考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字</text>
+			<text class="ct-block-desc">可以给学生老师进行题库生成，考试，自动阅卷评分等功能，功能强大，方便快捷</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>巡查系统</text>
 			</view>
-			<text class="ct-block-desc">巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，</text>
+			<text class="ct-block-desc">主要是给实验室的安全负责人和学校的安全管理人员，及时的对实验室安全情况进行检查和排查，有助于实验室安全管理更上一个台阶</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>危化品管理</text>
 			</view>
-			<text class="ct-block-desc">危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，</text>
+			<text class="ct-block-desc">学校实验室管理的重点管理部分，简化了危化品采购，储藏，报废等各个环节的管理工作，为危化品管理工作提供了更高效的作用</text>
 		</view>
 		
 <!-- 		<view class="ct-block__container">
@@ -226,6 +226,57 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			/**
+			 * 跳转到考试系统
+			 * @constructor
+			 */
+			goExam() {
+				const $vm = this
+				// 检查用户信息是否存在
+				if (!this.userDetails) {
+					uni.showToast({
+						title: '用户信息错误，请联系管理员',
+						icon: 'none'
+					})
+					return
+				}
+				const data = {
+					...this.userDetails,
+					type: 'apps'
+				}
+				const infoJsonStr = Base64.encode(JSON.stringify(data))
+				const href = `https://labexam.hunnu.edu.cn/labexam/apiLogin.php?key=${infoJsonStr}`
+				window.location.href = href
+			},
+			/**
+			 * 跳转到巡查系统
+			 * @constructor
+			 */
+			goCheck() {
+				const $vm = this
+				// 检查用户信息是否存在
+				if (!this.userDetails) {
+					uni.showToast({
+						title: '用户信息错误，请联系管理员',
+						icon: 'none'
+					})
+					return
+				} else if (this.userDetails.USER_TYPE === '2') {
+					// 在前端禁止学生进入实验室系统，如果开发调试，请先注释此处
+					uni.showToast({
+						title: '学生无权限进入系统',
+						icon: 'none'
+					})
+					return
+				}
+				const data = {
+					...this.userDetails,
+					type: 'apps'
+				}
+				const infoJsonStr = Base64.encode(JSON.stringify(data))
+				const href = `https://labexam.hunnu.edu.cn/lab-platform-server/openApiLogin?key=${infoJsonStr}`
+				window.location.href = href
 			},
 			/**
 			 * 月份选择回调
