@@ -75,29 +75,38 @@
 			<view class="ct-block__title">
 				<text>实验室系统</text>
 			</view>
-			<text class="ct-block-desc">实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。实验室系统的描述。</text>
+			<text class="ct-block-desc">提供了统一性全局性的实验室信息管理系统，涵盖了实验室基础信息管理，人员信息管理，安全检查管理等等模块，方便学校实验室管理</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>考试系统</text>
 			</view>
-			<text class="ct-block-desc">考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字，考试系统介绍性文字</text>
+			<text class="ct-block-desc">可以给学生老师进行题库生成，考试，自动阅卷评分等功能，功能强大，方便快捷</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>巡查系统</text>
 			</view>
-			<text class="ct-block-desc">巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，巡查系统介绍性文字，</text>
+			<text class="ct-block-desc">主要是给实验室的安全负责人和学校的安全管理人员，及时的对实验室安全情况进行检查和排查，有助于实验室安全管理更上一个台阶</text>
 		</view>
 		
 		<view class="ct-block__container">
 			<view class="ct-block__title">
 				<text>危化品管理</text>
 			</view>
-			<text class="ct-block-desc">危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，危化品管理介绍性文字，</text>
+			<text class="ct-block-desc">学校实验室管理的重点管理部分，简化了危化品采购，储藏，报废等各个环节的管理工作，为危化品管理工作提供了更高效的作用</text>
 		</view>
+		
+		<view class="ct-block__container">
+			<view class="ct-block__title">
+				<text>智能BI</text>
+			</view>
+			<text class="ct-block-desc">学校实验室综合管理系统各个模块数据的一个统计展示，能方便快捷的根据学校的数据统计需求，快速深度的做出BI统计结果</text>
+		</view>
+		
+		<view style="height: 30upx;"></view>
 		
 <!-- 		<view class="ct-block__container">
 			<view class="ct-block__title">
