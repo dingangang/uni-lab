@@ -22,17 +22,17 @@
 					</view>
 					<view class="ct-top-enter__title">实验室</view>
 				</view>
-				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/approval/approval')">
+				<view class="ct-top-enter__item" @tap="goExam">
 					<view class="ct-top-enter__img ct-top-enter__img--bg1">
 						<img src="../../common/icons/test.png" alt="">
 					</view>
 					<view class="ct-top-enter__title">考试</view>
 				</view>
-				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/safety/safety')">
+				<view class="ct-top-enter__item" @tap="goCheck">
 					<view class="ct-top-enter__img ct-top-enter__img--bg3">
 						<img src="../../common/icons/safe.png" alt="">
 					</view>
-					<view class="ct-top-enter__title">安全</view>
+					<view class="ct-top-enter__title">巡查</view>
 				</view>
 				<view class="ct-top-enter__item" @tap="swithTabbar('/pages/consumables/consumables')">
 					<view class="ct-top-enter__img ct-top-enter__img--bg4">
@@ -235,6 +235,57 @@
 					fail: () => {},
 					complete: () => {}
 				});
+			},
+			/**
+			 * 跳转到考试系统
+			 * @constructor
+			 */
+			goExam() {
+				const $vm = this
+				// 检查用户信息是否存在
+				if (!this.userDetails) {
+					uni.showToast({
+						title: '用户信息错误，请联系管理员',
+						icon: 'none'
+					})
+					return
+				}
+				const data = {
+					...this.userDetails,
+					type: 'apps'
+				}
+				const infoJsonStr = Base64.encode(JSON.stringify(data))
+				const href = `https://labexam.hunnu.edu.cn/labexam/apiLogin.php?key=${infoJsonStr}`
+				window.location.href = href
+			},
+			/**
+			 * 跳转到巡查系统
+			 * @constructor
+			 */
+			goCheck() {
+				const $vm = this
+				// 检查用户信息是否存在
+				if (!this.userDetails) {
+					uni.showToast({
+						title: '用户信息错误，请联系管理员',
+						icon: 'none'
+					})
+					return
+				} else if (this.userDetails.USER_TYPE === '2') {
+					// 在前端禁止学生进入实验室系统，如果开发调试，请先注释此处
+					uni.showToast({
+						title: '学生无权限进入系统',
+						icon: 'none'
+					})
+					return
+				}
+				const data = {
+					...this.userDetails,
+					type: 'apps'
+				}
+				const infoJsonStr = Base64.encode(JSON.stringify(data))
+				const href = `https://labexam.hunnu.edu.cn/lab-platform-server/openApiLogin?key=${infoJsonStr}`
+				window.location.href = href
 			},
 			/**
 			 * 月份选择回调
