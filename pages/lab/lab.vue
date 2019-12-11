@@ -56,6 +56,9 @@
 		computed: {
 			role: function() {
 				return this.$store.getters.role
+			},
+			userInfo: function() {
+				return this.$store.getters.userInfo
 			}
 		},
 		methods: {
@@ -142,7 +145,17 @@
 			 * 获取实验室列表
 			 */
 			getLabList() {
-				const data = {}
+				let userCode
+				if (this.userInfo) {
+					if (this.userInfo.USER_TYPE === '1') {
+						userCode = this.userInfo.workno
+					} else {
+						userCode = this.userInfo.xgno
+					}
+				}
+				const data = {
+					userCode
+				}
 				getLabList(data).then(res => {
 					console.log('实验室列表返回信息', res);
 					if (res.serverResult.resultCode === 200) {

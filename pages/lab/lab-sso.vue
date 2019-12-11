@@ -44,7 +44,12 @@
 				const userinfoJson = JSON.parse(decodeStr)
 				if (userinfoJson && userinfoJson.name) {
 					// const userLoginReq = { 'user_code': userinfoJson.usercode, 'user_name': userinfoJson.username }
-					vm.getUserInfo(userinfoJson)
+					// 手机端新增标识loginType=1
+					const data = {
+						...userinfoJson,
+						loginType: '1'
+					}
+					vm.getUserInfo(data)
 					// 动态设置页面标题
 					uni.setNavigationBarTitle({
 						title: '请选择角色'

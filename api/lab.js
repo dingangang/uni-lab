@@ -12,13 +12,13 @@ export function userSSO(data) {
 // 根据用户角色换取实验室列表
 export function getLabList(data) {
   return request({
-    url: '/org/base/queryOrgList',
+    url: '/org/base/queryMobileOrgList',
     method: 'post',
 		data
   })
 }
 
-// 根据用户角色换取实验室列表
+// 获取实验室详情
 export function getLabInfoByID(params) {
   return request({
     url: '/metadata/query/college',
