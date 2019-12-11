@@ -138,6 +138,7 @@
 	import { mapGetters } from 'vuex'
 	import { Base64 } from 'js-base64'
 	import { checkTokenActive } from '../../api/auth.js'
+	import { removeUserRole } from '../../utils/auth.js'
 	export default {
 		data() {
 			return {
@@ -187,6 +188,10 @@
 				timeColumns: ['本月', '上月']
 				
 			}
+		},
+		onShow() {
+			// 暂时设置每次进入实验室都需要选角色，所以在当前页面清空掉userRole
+			removeUserRole()
 		},
 		created() {
 		

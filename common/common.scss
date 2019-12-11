@@ -3,6 +3,11 @@
 	flex: 1;
 }
 
+// 暂时隐藏tabbar
+.uni-tabbar {
+	display: none!important;
+}
+
 body {
 	background: #f0f0ee;
 	
