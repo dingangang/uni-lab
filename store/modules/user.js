@@ -7,7 +7,9 @@ import { getToken,
   getTokenInfo,
   setCode,
   removeCode,
-	removeTokenInfo
+	removeTokenInfo,
+	removeUserRole,
+	removeUserId
 } from '../../utils/auth'
 import { getAuthToken,
   refreshToken,
@@ -159,6 +161,8 @@ const actions = {
         removeToken()
         removeCode()
 				removeTokenInfo()
+				removeUserId()
+				removeUserRole()
         // resetRouter()
         try {
 					const logoutResult = await logoutFromAuth()

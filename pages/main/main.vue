@@ -45,7 +45,7 @@
 				<view class="ct-user-status__role">
 					<van-icon name="manager" />
 					<text>{{userDetails ? userDetails.name : ''}} {{userRole}}</text>
-					<van-icon name="arrow-down" />
+					<!-- <van-icon name="arrow-down" /> -->
 				</view>
 				<view class="ct-user-status__calendar" @tap="showTimePicker=true">
 					<img src="../../common/icons/calendar.png" alt="">
@@ -313,7 +313,7 @@
 					type: 'apps'
 				}
 				const infoJsonStr = Base64.encode(JSON.stringify(data))
-				const href = `http://202.197.117.218/hbnu1.0/public/base/Login/schoolLogin?key=${infoJsonStr}`
+				const href = `http://202.197.117.218/hbnu/public/base/Login/schoolLogin?key=${infoJsonStr}`
 				window.location.href = href
 			},
 			/**

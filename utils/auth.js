@@ -60,3 +60,11 @@ export function removeCode() {
   const storage = window.localStorage
   storage.removeItem('code')
 }
+
+export function removeUserRole() {
+  return Cookies.remove('user_role')
+}
+
+export function removeUserId() {
+	return Cookies.remove('user_id')
+}
