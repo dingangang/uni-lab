@@ -318,7 +318,7 @@
 					type: 'apps'
 				}
 				const infoJsonStr = Base64.encode(JSON.stringify(data))
-				const href = `http://202.197.117.218/hbnu/public/base/Login/schoolLogin?key=${infoJsonStr}`
+				const href = `http://whpgl.hunnu.edu.cn/hbnu/public/base/Login/schoolLogin?key=${infoJsonStr}`
 				window.location.href = href
 			},
 			/**
