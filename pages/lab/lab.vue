@@ -44,10 +44,15 @@
 				list: [],
 				loading: false,
 				finished: false,
-				title: '实验室列表'
+				title: '实验室列表',
+				pagination: {
+					pageNo: 1,
+					pageSize: 20,
+					total: 20
+				}
 			}
 		},
-		onLoad() {
+		onShow() {
 			this.getLabList()
 		},
 		onReachBottom() {
@@ -84,25 +89,13 @@
 					return
 				}
 				
+				this.getLabList()
 				
-				// 填充静态数据
-				this.loading = false
-				this.finished = true
-				this.list = [
-					{
-						id: '1',
-						name: '化学生物学及中药分析教育部重点实验室'
-					},{
-						id: '2',
-						name: '石化材料工程实验室'
-					},{
-						id: '3',
-						name: '低纬量子结构与调控教育部重点实验室'
-					},{
-						id: '4',
-						name: '纳米化学实验室'
-					},
-				]
+				
+				if (this.pagination.pageNo * this.pagination.pageSize >= total) {
+					this.loading = false
+					this.finished = true
+				}
 			},
 			/**
 			 * 处理预定按钮点击
@@ -153,13 +146,17 @@
 						userCode = this.userInfo.xgno
 					}
 				}
+				
 				const data = {
-					userCode
+					userCode,
+					...this.pagination
 				}
 				getLabList(data).then(res => {
 					console.log('实验室列表返回信息', res);
 					if (res.serverResult.resultCode === 200) {
-						this.list = res.rows
+						this.list.push(...res.rows)
+						this.pagination.pageNo += 1
+						this.pagination.total = res.total
 					}
 				})
 			}
