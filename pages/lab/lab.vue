@@ -53,6 +53,12 @@
 			}
 		},
 		onShow() {
+			this.pagination = {
+					pageNo: 1,
+					pageSize: 20,
+					total: 20
+				}
+			this.list = []
 			this.getLabList()
 		},
 		onReachBottom() {
