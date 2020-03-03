@@ -5,7 +5,7 @@ import axios from 'axios'
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // baseURL: 'http://localhost:8099/lab/', // url = base url + request url
-  baseURL: 'http://www.shitanlife.com:8099/lab/', // url = base url + request url
+  baseURL: 'http://syszhxxpt.hunnu.edu.cn/lab/', // url = base url + request url
   withCredentials: true, // send cookies when cross-domain requests
   timeout: 20000, // request timeout
   headers: {
